@@ -3,7 +3,6 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
-import HeroNavbar from './HeroNavbar';
 
 const NAV = [
   { label: 'Home', href: '/' },
@@ -84,48 +83,24 @@ export default function Navbar() {
 
   useEffect(() => { setMenuOpen(false); setMobileOpen(null); }, [pathname]);
 
+  const isHero = showHeroNavbar;
+
   return (
-    <>
-      {/* Show HeroNavbar only in hero section */}
-      <div style={{
-        transition: 'transform 0.3s ease, opacity 0.3s ease',
-        transform: showHeroNavbar ? 'translateY(0)' : 'translateY(-100%)',
-        opacity: showHeroNavbar ? 1 : 0,
-        position: 'fixed',
-        top: 0,
-        left: 0,
-        right: 0,
-        zIndex: 1000,
-        pointerEvents: showHeroNavbar ? 'auto' : 'none'
-      }}>
-        <HeroNavbar />
-      </div>
-      
-      {/* Show second header when scrolling up after hero section */}
-      <div style={{
-        transition: 'transform 0.3s ease, opacity 0.3s ease',
-        transform: showSecondNavbar ? 'translateY(0)' : 'translateY(-100%)',
-        opacity: showSecondNavbar ? 1 : 0,
-        position: 'fixed',
-        top: 0,
-        left: 0,
-        right: 0,
-        zIndex: 1000,
-        pointerEvents: showSecondNavbar ? 'auto' : 'none'
-      }}>
-      {showSecondNavbar && (
-        <header
-          style={{
-            position: 'fixed', top: 0, left: 0, right: 0, zIndex: 1000,
-            background: 'rgba(10, 22, 40, 0.85)',
-            backdropFilter: 'blur(10px)',
-            borderRadius: '0 0 16px 16px',
-            margin: '0 16px',
-            boxShadow: '0 8px 32px rgba(0, 0, 0, 0.3)',
-            border: '1px solid rgba(255, 255, 255, 0.1)',
-            transition: 'all 0.3s ease',
-          }}
-        >
+    <header
+      style={{
+        position: 'fixed', top: 0, left: 0, right: 0, zIndex: 1000,
+        background: isHero ? 'rgba(10, 22, 40, 0.85)' : 'rgba(10, 22, 40, 0.95)',
+        backdropFilter: 'blur(10px)',
+        borderRadius: isHero ? '16px' : '0 0 16px 16px',
+        margin: isHero ? '20px 200px' : '0 16px',
+        boxShadow: '0 8px 32px rgba(0, 0, 0, 0.3)',
+        border: '1px solid rgba(255, 255, 255, 0.1)',
+        transition: 'all 0.3s ease',
+        transform: (isHero || showSecondNavbar) ? 'translateY(0)' : 'translateY(-100%)',
+        opacity: (isHero || showSecondNavbar) ? 1 : 0,
+        pointerEvents: (isHero || showSecondNavbar) ? 'auto' : 'none',
+      }}
+    >
       {/* Top bar */}
       {/* <div style={{ background: '#071020', padding: '6px 0', borderBottom: '1px solid rgba(184,150,62,0.15)' }}>
         <div className="container flex-between" style={{ gap: 16 }}>
@@ -147,10 +122,10 @@ export default function Navbar() {
   <Image
     src="/images/logo.png"
     alt="Vizora Optics Logo"
-    width={160}
-    height={100}
+    width={100}
+    height={60}
     unoptimized
-    style={{ height: '100px', width: 'auto', objectFit: 'contain' }}
+    style={{ height: '60px', width: 'auto', objectFit: 'contain' }}
   />
 </Link>
 
@@ -158,9 +133,9 @@ export default function Navbar() {
         <nav style={{ display: 'flex', alignItems: 'center', gap: 6 }} className="desktop-nav">
           {NAV.map((item) => (
             <div
-              key={item.href}
+              key={item.label}
               style={{ position: 'relative' }}
-              onMouseEnter={() => item.children && setOpenDropdown(item.href)}
+              onMouseEnter={() => item.children && setOpenDropdown(item.label)}
               onMouseLeave={() => setOpenDropdown(null)}
             >
               <Link
@@ -190,39 +165,40 @@ export default function Navbar() {
               </Link>
 
               {/* Dropdown */}
-              {item.children && openDropdown === item.href && (
+              {item.children && openDropdown === item.label && (
                 <div style={{
-                  position: 'absolute', top: '100%', left: 0, minWidth: 200,
-                  background: 'rgba(10, 22, 40, 0.95)',
-                  backdropFilter: 'blur(10px)',
+                  position: 'absolute', top: 'calc(100% + 4px)', left: 0, minWidth: 220,
+                  background: 'rgba(10, 22, 40, 0.98)',
+                  backdropFilter: 'blur(20px)',
                   borderRadius: '12px',
-                  boxShadow: '0 8px 32px rgba(0, 0, 0, 0.3)',
-                  border: '1px solid rgba(255, 255, 255, 0.1)',
-                  padding: '8px 0',
-                  marginTop: '8px',
-                  animation: 'fadeInUp 0.18s ease both',
-                  zIndex: 100,
+                  boxShadow: '0 16px 48px rgba(0, 0, 0, 0.4)',
+                  border: '1px solid rgba(255, 255, 255, 0.15)',
+                  padding: '10px 0',
+                  animation: 'fadeInUp 0.2s ease both',
+                  zIndex: 1000,
                 }}>
+                  {/* Invisible bridge to prevent hover gap */}
+                  <div style={{ position: 'absolute', top: -10, left: 0, right: 0, height: 10 }} />
                   {item.children.map((child) => (
                     <Link
-                      key={child.href}
+                      key={child.label}
                       href={child.href}
                       style={{
-                        display: 'block', padding: '10px 20px',
-                        fontSize: '0.85rem', fontWeight: 400,
-                        color: pathname === child.href ? '#fff' : 'rgba(255,255,255,0.7)',
-                        transition: 'all 0.2s',
+                        display: 'block', padding: '12px 20px',
+                        fontSize: '0.85rem', fontWeight: 500,
+                        color: '#fff',
+                        transition: 'all 0.15s ease',
                         textDecoration: 'none',
-                        borderRadius: '6px',
-                        margin: '2px 8px',
+                        borderRadius: '8px',
+                        margin: '2px 10px',
                       }}
                       onMouseEnter={(e) => {
-                        (e.currentTarget as HTMLAnchorElement).style.background = 'rgba(255,255,255,0.1)';
+                        (e.currentTarget as HTMLAnchorElement).style.background = 'rgba(21, 101, 192, 0.3)';
                         (e.currentTarget as HTMLAnchorElement).style.color = '#fff';
                       }}
                       onMouseLeave={(e) => {
                         (e.currentTarget as HTMLAnchorElement).style.background = 'transparent';
-                        (e.currentTarget as HTMLAnchorElement).style.color = pathname === child.href ? '#fff' : 'rgba(255,255,255,0.7)';
+                        (e.currentTarget as HTMLAnchorElement).style.color = '#fff';
                       }}
                     >
                       {child.label}
@@ -267,7 +243,7 @@ export default function Navbar() {
           borderTop: 'none',
         }}>
           {NAV.map((item) => (
-            <div key={item.href}>
+            <div key={item.label}>
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '14px 24px', borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
                 <Link
                   href={item.href}
@@ -277,20 +253,20 @@ export default function Navbar() {
                 </Link>
                 {item.children && (
                   <button
-                    onClick={() => setMobileOpen(mobileOpen === item.href ? null : item.href)}
+                    onClick={() => setMobileOpen(mobileOpen === item.label ? null : item.label)}
                     style={{ background: 'none', border: 'none', color: 'rgba(255,255,255,0.6)', cursor: 'pointer', padding: 4 }}
                   >
                     <svg width="12" height="8" viewBox="0 0 12 8" fill="none">
-                      <path d={mobileOpen === item.href ? 'M1 7l5-5 5 5' : 'M1 1l5 5 5-5'} stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/>
+                      <path d={mobileOpen === item.label ? 'M1 7l5-5 5 5' : 'M1 1l5 5 5-5'} stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/>
                     </svg>
                   </button>
                 )}
               </div>
-              {item.children && mobileOpen === item.href && (
+              {item.children && mobileOpen === item.label && (
                 <div style={{ background: 'rgba(0, 0, 0, 0.2)', paddingLeft: 16 }}>
                   {item.children.map((child) => (
                     <Link
-                      key={child.href}
+                      key={child.label}
                       href={child.href}
                       style={{ display: 'block', padding: '10px 24px', fontSize: '0.85rem', color: 'rgba(255,255,255,0.6)', borderBottom: '1px solid rgba(255,255,255,0.03)', textDecoration: 'none' }}
                     >
@@ -331,9 +307,6 @@ export default function Navbar() {
           .desktop-cta { display: none !important; }
         }
       `}</style>
-        </header>
-      )}
-      </div>
-    </>
+    </header>
   );
 }

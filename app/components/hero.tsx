@@ -18,28 +18,6 @@ export function HeroSparkles() {
         overflow: "hidden",
       }}
     >
-      {/* Full-page sparkles layer */}
-      <div
-        style={{
-          position: "absolute",
-          inset: 0,
-          width: "100%",
-          height: "100%",
-          zIndex: 0,
-        }}
-      >
-        <SparklesCore
-          id="vizora-hero-sparkles"
-          background="transparent"
-          minSize={0.4}
-          maxSize={1.2}
-          particleDensity={90}
-          particleColor="#00cfff"
-          speed={1.2}
-          className="w-full h-full"
-        />
-      </div>
-
       {/* Radial vignette */}
       <div
         style={{
@@ -111,7 +89,7 @@ export function HeroSparkles() {
               top: 0,
               height: 2,
               background:
-                "linear-gradient(to right, transparent, #00cfff, transparent)",
+                "linear-gradient(to right, transparent, #ffffff, transparent)",
               filter: "blur(1px)",
             }}
           />
@@ -123,7 +101,7 @@ export function HeroSparkles() {
               top: 0,
               height: 1,
               background:
-                "linear-gradient(to right, transparent, #1e90ff, transparent)",
+                "linear-gradient(to right, transparent, rgba(255,255,255,0.8), transparent)",
             }}
           />
           <div
@@ -134,7 +112,7 @@ export function HeroSparkles() {
               top: 0,
               height: 5,
               background:
-                "linear-gradient(to right, transparent, rgba(0,207,255,0.5), transparent)",
+                "linear-gradient(to right, transparent, rgba(255,255,255,0.5), transparent)",
               filter: "blur(3px)",
             }}
           />
@@ -142,11 +120,11 @@ export function HeroSparkles() {
           <SparklesCore
             id="vizora-hero-bar"
             background="transparent"
-            minSize={0.3}
-            maxSize={0.9}
-            particleDensity={1200}
-            particleColor="#00cfff"
-            speed={2}
+            minSize={1}
+            maxSize={2}
+            particleDensity={400}
+            particleColor="#ffffff"
+            speed={3}
             className="w-full h-full"
           />
 

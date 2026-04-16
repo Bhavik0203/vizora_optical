@@ -258,7 +258,7 @@ export default function HomePage() {
           }
           .prod-detail-desc {
             font-size: 1rem;
-            color: rgba(255,255,255,0.55);
+            color: rgba(255,255,255,0.75);
             line-height: 1.88;
             max-width: 540px;
             text-align: center;
@@ -324,11 +324,11 @@ export default function HomePage() {
 
                 {/* Ideal for */}
                 <p style={{
-                  fontSize: '0.88rem', color: 'rgba(255,255,255,0.35)',
+                  fontSize: '0.88rem', color: 'rgba(255,255,255,0.75)',
                   letterSpacing: '0.1em', textTransform: 'uppercase',
                   marginBottom: 32, fontWeight: 600,
                 }}>
-                  Ideal for - <span style={{ color: 'rgba(255,255,255,0.55)', fontWeight: 400, textTransform: 'none', letterSpacing: 0 }}>{p.ideal}</span>
+                  Ideal for - <span style={{ color: 'rgba(255,255,255,0.75)', fontWeight: 400, textTransform: 'none', letterSpacing: 0 }}>{p.ideal}</span>
                 </p>
 
                 {/* See More — bottom-right */}
@@ -402,10 +402,11 @@ export default function HomePage() {
               Advanced Lens Coatings
             </h2>
             <p style={{
-              fontSize: '1.1rem',
+              fontSize: '0.90 rem',
               color: 'rgba(255,255,255,0.7)',
               maxWidth: '600px',
-              margin: '0 auto',
+              margin: '20px auto',
+
               lineHeight: 1.6
             }}>
               Cutting-edge coating technologies designed for superior clarity, durability, and visual comfort
@@ -466,7 +467,7 @@ export default function HomePage() {
                   marginBottom: 16,
                   border: '1px solid rgba(21,101,192,0.2)'
                 }}>
-                  <span style={{ fontSize: '1.5rem', color: 'linear-gradient(135deg, #1565c0, #0097c7)' }}>◈</span>
+                  <span style={{ fontSize: '1.5rem', color: '#fff' }}>◈</span>
                 </div>
                 <h3 style={{ 
                   color: '#fff', 
@@ -478,7 +479,7 @@ export default function HomePage() {
                 </h3>
                 <p style={{ 
                   fontSize: '0.8rem', 
-                  color: 'linear-gradient(135deg, #1565c0, #0097c7)', 
+                  color: 'white', 
                   letterSpacing: '0.06em', 
                   textTransform: 'uppercase', 
                   marginBottom: 12,
@@ -541,7 +542,7 @@ export default function HomePage() {
                   marginBottom: 16,
                   border: '1px solid rgba(21,101,192,0.2)'
                 }}>
-                  <span style={{ fontSize: '1.5rem', color: 'linear-gradient(135deg, #1565c0, #0097c7)' }}>◎</span>
+                  <span style={{ fontSize: '1.5rem', color: '#fff' }}>◎</span>
                 </div>
                 <h3 style={{ 
                   color: '#fff', 
@@ -553,7 +554,7 @@ export default function HomePage() {
                 </h3>
                 <p style={{ 
                   fontSize: '0.8rem', 
-                  color: 'linear-gradient(135deg, #1565c0, #0097c7)', 
+                  color: 'white', 
                   letterSpacing: '0.06em', 
                   textTransform: 'uppercase', 
                   marginBottom: 12,
@@ -586,10 +587,12 @@ export default function HomePage() {
               overflow: 'hidden',
               boxShadow: '0 16px 48px rgba(0, 0, 0, 0.4)',
               border: '1px solid rgba(255, 255, 255, 0.1)',
-              height: '600px'
+              aspectRatio: '9/16',
+              maxHeight: '600px',
+              width: '100%'
             }}>
               <video
-                src="/images/girl.mp4"
+                src="/images/videonew.mp4"
                 autoPlay
                 muted
                 loop
@@ -648,7 +651,7 @@ export default function HomePage() {
                   marginBottom: 16,
                   border: '1px solid rgba(21,101,192,0.2)'
                 }}>
-                  <span style={{ fontSize: '1.5rem', color: 'linear-gradient(135deg, #1565c0, #0097c7)' }}>◉</span>
+                  <span style={{ fontSize: '1.5rem', color: '#fff' }}>◉</span>
                 </div>
                 <h3 style={{ 
                   color: '#fff', 
@@ -660,7 +663,7 @@ export default function HomePage() {
                 </h3>
                 <p style={{ 
                   fontSize: '0.8rem', 
-                  color: 'linear-gradient(135deg, #1565c0, #0097c7)', 
+                  color: 'white',  
                   letterSpacing: '0.06em', 
                   textTransform: 'uppercase', 
                   marginBottom: 12,
@@ -723,7 +726,7 @@ export default function HomePage() {
                   marginBottom: 16,
                   border: '1px solid rgba(21,101,192,0.2)'
                 }}>
-                  <span style={{ fontSize: '1.5rem', color: 'linear-gradient(135deg, #1565c0, #0097c7)' }}>◆</span>
+                  <span style={{ fontSize: '1.5rem', color: '#fff' }}>◆</span>
                 </div>
                 <h3 style={{ 
                   color: '#fff', 
@@ -735,7 +738,7 @@ export default function HomePage() {
                 </h3>
                 <p style={{ 
                   fontSize: '0.8rem', 
-                  color: 'linear-gradient(135deg, #1565c0, #0097c7)', 
+                   color: 'white',  
                   letterSpacing: '0.06em', 
                   textTransform: 'uppercase', 
                   marginBottom: 12,
@@ -802,7 +805,7 @@ export default function HomePage() {
                 Join our network of trusted optical retailers and distributors. Get competitive pricing, dependable service, and efficient logistics support.
               </p>
             </div>
-            <div style={{ position: 'absolute', bottom: 30, right: 30, zIndex: 2, display: 'flex', flexDirection: 'column', gap: 12, alignItems: 'flex-end' }}>
+            <div style={{ position: 'absolute', bottom: 30, left: 30, zIndex: 2, display: 'flex', flexDirection: 'column', gap: 12, alignItems: 'flex-start' }}>
               <Link
                 href="/contact"
                 id="home-partner-cta"
