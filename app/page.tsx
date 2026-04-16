@@ -347,7 +347,7 @@ export default function HomePage() {
                     transition: 'color 0.2s',
                   }}
                   onMouseEnter={e => (e.currentTarget.style.color = 'rgba(255,255,255,0.9)')}
-                  onMouseLeave={e => (e.currentTarget.style.color = 'rgba(255,255,255,0.55)')}
+                  onMouseLeave={e => (e.currentTarget.style.color = 'rgba(255,255,255,0.75)')}
                 >
                   See More
                   <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
