@@ -122,10 +122,10 @@ export default function Navbar() {
   <Image
     src="/images/logo.png"
     alt="Vizora Optics Logo"
-    width={100}
-    height={60}
+    width={140}
+    height={80}
     unoptimized
-    style={{ height: '60px', width: 'auto', objectFit: 'contain' }}
+    style={{ height: '80px', width: 'auto', objectFit: 'contain' }}
   />
 </Link>
 

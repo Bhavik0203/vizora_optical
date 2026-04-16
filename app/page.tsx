@@ -115,7 +115,7 @@ export default function HomePage() {
 
    
       {/* ── Wear Your Shape ── */}
-      <section style={{ background: '#000', padding: '72px 0 80px' }}>
+      <section style={{ background: '#0a1628', padding: '72px 0 80px' }}>
         <style>{`
           .shape-card { display: flex; flex-direction: column; align-items: center; gap: 20px; cursor: default; }
           .shape-icon-wrap {
