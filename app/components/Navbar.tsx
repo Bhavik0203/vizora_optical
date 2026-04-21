@@ -8,30 +8,30 @@ const NAV = [
   { label: 'Home', href: '/' },
   {
     label: 'About Us',
-    href: '/',
+    href: '/about',
     children: [
-      { label: 'Mission & Values', href: '/' },
-      { label: 'History', href: '/' },
-      { label: 'Innovation & R&D', href: '/' },
-      { label: 'Media & Press', href: '/' },
+      { label: 'Mission & Values', href: '/about/mission' },
+      { label: 'History', href: '/about/history' },
+      { label: 'Innovation & R&D', href: '/about/innovation' },
+      { label: 'Media & Press', href: '/about/media' },
     ],
   },
   {
     label: 'Products',
-    href: '/',
+    href: '/products',
     children: [
-      { label: 'Optical Lenses', href: '/' },
-      { label: 'Technology', href: '/' },
-      { label: 'Compare Products', href: '/' },
+      { label: 'Optical Lenses', href: '/products/lenses' },
+      { label: 'Technology', href: '/products/technology' },
+      { label: 'Compare Products', href: '/products/compare' },
     ],
   },
   {
     label: 'Professionals',
-    href: '/',
+    href: '/professionals',
     children: [
-      { label: 'Resources', href: '/' },
-      { label: 'Specs & Docs', href: '/' },
-      { label: 'Training', href: '/' },
+      { label: 'Resources', href: '/professionals/resources' },
+      { label: 'Specs & Docs', href: '/professionals/specs' },
+      { label: 'Training', href: '/professionals/training' },
     ],
   },
   { label: 'Contact', href: '/contact' },
@@ -210,6 +210,44 @@ export default function Navbar() {
           ))}
         </nav>
 
+        {/* Order Online Button */}
+        <a
+          href="https://www.solenzara.co.uk/vizorastart.html"
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{
+            display: 'none',
+            alignItems: 'center',
+            gap: 8,
+            fontSize: '0.85rem',
+            fontWeight: 700,
+            letterSpacing: '0.06em',
+            textTransform: 'uppercase',
+            color: 'white',
+            background: 'rgba(21, 101, 192, 0.8)',
+            padding: '8px 16px',
+            borderRadius: '6px',
+            textDecoration: 'none',
+            transition: 'all 0.3s ease',
+            border: '1px solid rgba(21, 101, 192, 0.4)',
+          }}
+          className="desktop-order-btn"
+          onMouseEnter={(e) => {
+            e.currentTarget.style.background = 'rgba(21, 101, 192, 1)';
+            e.currentTarget.style.transform = 'translateY(-2px)';
+            e.currentTarget.style.boxShadow = '0 4px 12px rgba(21, 101, 192, 0.3)';
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.background = 'rgba(21, 101, 192, 0.8)';
+            e.currentTarget.style.transform = 'translateY(0)';
+            e.currentTarget.style.boxShadow = 'none';
+          }}
+        >
+          Order Online
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+            <path d="M2 6h8M6 2l4 4-4 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round"/>
+          </svg>
+        </a>
 
         {/* Mobile hamburger */}
         <button
@@ -305,6 +343,10 @@ export default function Navbar() {
           .mobile-menu-btn { display: flex !important; }
           header > div:nth-child(2) > a.btn { display: none !important; }
           .desktop-cta { display: none !important; }
+          .desktop-order-btn { display: none !important; }
+        }
+        @media (min-width: 961px) {
+          .desktop-order-btn { display: flex !important; }
         }
       `}</style>
     </header>

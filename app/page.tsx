@@ -55,9 +55,31 @@ export default function HomePage() {
           <p style={{ fontSize: '0.82rem', fontWeight: 600, color: 'white', letterSpacing: '0.04em' }}>
             Now Available: V INFINITY 4K - Ultra-Premium Digital Progressive Lens
           </p>
-          <Link href="/products/lenses" style={{ fontSize: '0.78rem', fontWeight: 700, color: 'white', textDecoration: 'underline', letterSpacing: '0.06em' }}>
-            Learn More →
-          </Link>
+          <div style={{ display: 'flex', gap: 16, alignItems: 'center' }}>
+            <Link href="/products/lenses" style={{ fontSize: '0.78rem', fontWeight: 700, color: 'white', textDecoration: 'underline', letterSpacing: '0.06em' }}>
+              Learn More →
+            </Link>
+            <a 
+              href="https://www.solenzara.co.uk/vizorastart.html" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              style={{ 
+                fontSize: '0.78rem', 
+                fontWeight: 700, 
+                color: 'white', 
+                background: 'rgba(255,255,255,0.2)',
+                padding: '6px 12px',
+                borderRadius: '4px',
+                textDecoration: 'none', 
+                letterSpacing: '0.06em',
+                transition: 'background 0.3s ease'
+              }}
+              onMouseEnter={(e) => { e.currentTarget.style.background = 'rgba(255,255,255,0.3)' }}
+              onMouseLeave={(e) => { e.currentTarget.style.background = 'rgba(255,255,255,0.2)' }}
+            >
+              Order Online →
+            </a>
+          </div>
         </div>
       </div>
 
@@ -130,9 +152,9 @@ export default function HomePage() {
           }
           .shape-card:hover .shape-icon-wrap img { filter: brightness(0) invert(1) sepia(1) saturate(4) hue-rotate(5deg) brightness(1.1); }
         `}</style>
-        <div className="container">
+        {/* <div className="container"> */}
           {/* Heading */}
-          <div style={{ textAlign: 'center', marginBottom: 60 }}>
+          {/* <div style={{ textAlign: 'center', marginBottom: 60 }}>
             <h2 style={{
               color: '#fff',
               fontFamily: 'Inter, sans-serif',
@@ -156,7 +178,7 @@ export default function HomePage() {
             </p>
           </div>
 
-          {/* Shape Grid */}
+          
           <div style={{
             display: 'flex',
             justifyContent: 'center',
@@ -193,8 +215,8 @@ export default function HomePage() {
                 </span>
               </div>
             ))}
-          </div>
-        </div>
+          </div> */}
+        {/* </div> */}
       </section>
 
       {/* ── Products ── */}
