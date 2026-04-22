@@ -10,48 +10,16 @@ const ArrowUpRightIcon = ({ className }: { className?: string }) => (
     className={`h-4 w-4 ${className || ''}`}
     fill="none"
     stroke="currentColor"
-    strokeWidth="3"
+    strokeWidth="2"
     strokeLinecap="round"
     strokeLinejoin="round"
-    aria-hidden="true"
   >
     <path d="M7 17L17 7" />
     <path d="M8 7h9v9" />
   </svg>
 );
-
-const ArrowRightIcon = ({ className }: { className?: string }) => (
-  <svg
-    viewBox="0 0 24 24"
-    className={`h-4 w-4 ${className || ''}`}
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="3"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    aria-hidden="true"
-  >
-   <path d="M5 12h14" />
-    <path d="M12 5l7 7-7 7" />
-  </svg>
-);
 export default function GetToKnowUs() {
-    const [currentSlide, setCurrentSlide] = useState(0);
-  
-    const handleMouseEnter = (e: React.MouseEvent<HTMLButtonElement>) => {
-      const rect = e.currentTarget.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
-      e.currentTarget.style.setProperty("--mouse-x", `${x}px`);
-      e.currentTarget.style.setProperty("--mouse-y", `${y}px`);
-    };
-  
-    const openModal = () => {
-      // Add modal functionality here
-      console.log('Opening modal...');
-    };
-  
-  const textRef = useRef<HTMLParagraphElement>(null);
+  const textRef = useRef<HTMLHeadingElement>(null);
   const [scrollProgress, setScrollProgress] = useState(0);
 
   useEffect(() => {
@@ -77,7 +45,14 @@ export default function GetToKnowUs() {
     
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+ const [mousePosition, setMousePosition] = useState({ x: 50, y: 50 });
 
+  const handleMouseMove = (e: React.MouseEvent<HTMLButtonElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = ((e.clientX - rect.left) / rect.width) * 100;
+    const y = ((e.clientY - rect.top) / rect.height) * 100;
+    setMousePosition({ x, y });
+  };
   const renderAnimatedText = (text: string) => {
     const totalChars = text.length;
     return text.split('').map((char, index) => {
@@ -102,77 +77,55 @@ export default function GetToKnowUs() {
     <section className="w-full bg-[#f5f3f3] px-4 py-12">
       <div className="mx-auto w-full max-w-7xl">
        
-
-        <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-stretch">
-          {/* Left Side - All Content Stacked */}
-          <div className="flex flex-col gap-6 lg:w-1/2">
-            {/* Header */}
-            <h2 className="text-sm font-bold uppercase tracking-[0.2em] text-[#3B3808]">GET TO KNOW US</h2>
-
-            {/* Ideas Card */}
-            <div className="relative rounded-2xl bg-[#dbe7e6] p-6 shadow-sm w-fit">
-              <div className="relative">
-                <p className="text-[42px] font-bold leading-[1.02] text-[#0c1a1a]">
-                  <span className="block">We can</span>
-                  <span className="block">help turn</span>
-                  <span className="block">your </span>
-                  <span className="block">ideas into</span>
-                  <span className="block">reality!</span>
-                </p>
-
-                <div className="absolute right-2 top-1/2 -translate-y-1/2">
-                  <div className="relative h-10 w-16 overflow-hidden rounded-lg">
-                    <Image
-                      src="/images/bg2.png"
-                      alt="Team"
-                      fill
-                      className="object-cover"
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Text Content */}
+        <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 items-center">
+          <div className="space-y-6">
             <div>
-              <p ref={textRef} className='text-[22px] font-bold leading-[1.4] mb-4 text-[#0c1a1a]'>
-                {renderAnimatedText("Sunbrilo Technologies is an innovative IT solutions provider, offering a comprehensive suite of services to propel businesses into the digital age. we empower organizations to thrive in a dynamic technological landscape.")}
-              </p>
-              <p className='text-[15px] leading-relaxed text-black/80'>
-                Our dedicated team of professionals combines advanced technology with strategic insights to deliver solutions that enhance efficiency, boost productivity, and accelerate growth. Whether you need consultation, execution, or ongoing support, Sunbrilo Technologies is your trusted partner for success.
-              </p>
+              <h2 className="text-sm font-bold  uppercase tracking-[0.2em] text-[#3B3808] mb-2 font-raleway">Get to know us</h2>
+              <div className="w-20 h-0.5 bg-[#3B3808] mb-6"></div>
             </div>
-
-            {/* Button */}
+            <h3 ref={textRef} className='text-4xl font-bold leading-[1.2] text-[#1a1a1a] font-raleway'>
+              {renderAnimatedText("We can help turn your ideas into reality!")}
+            </h3>
+            <p className="text-[#666666] leading-relaxed font-raleway">
+              Sunbrilo Technologies is an innovative IT solutions provider, offering a comprehensive suite of services to propel businesses into the digital age. we empower organizations to thrive in a dynamic technological landscape. Our dedicated team of professionals combines advanced technology with strategic insights to deliver solutions that enhance efficiency, boost productivity, and accelerate growth. Whether you need consultation, execution, or ongoing support, Sunbrilo Technologies is your trusted partner for success.
+            </p>
             <button
               type="button"
-              onClick={openModal}
-              onMouseEnter={handleMouseEnter}
-              className="group relative overflow-hidden rounded-full bg-[#ffee50] px-4 py-2 text-[14px] font-semibold text-[#3B3808] transition-all w-fit cursor-pointer mt-auto"
+              onMouseMove={handleMouseMove}
+              className="group relative inline-flex items-center gap-3 overflow-hidden rounded-full bg-[#ffee50] px-6 py-3 text-sm font-semibold text-[#3B3808] transition-all hover:text-white font-raleway"
             >
+              {/* Hover Background Effect */}
               <span
-                className="absolute z-0 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#3B3808] transition-transform duration-700 delay-100 ease-[cubic-bezier(0.19,1,0.22,1)] scale-0 group-hover:scale-[4]"
+                className="pointer-events-none absolute -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#3B3808] transition-transform duration-500 ease-out"
                 style={{
-                  left: "var(--mouse-x, 50%)",
-                  top: "var(--mouse-y, 50%)",
-                  width: "100px",
-                  height: "100px",
+                  left: `${mousePosition.x}%`,
+                  top: `${mousePosition.y}%`,
+                  width: '200%',
+                  height: '200%',
+                  transform: 'translate(-50%, -50%) scale(0)',
                 }}
               />
-              <div className="relative z-10 flex items-center gap-2 transition-colors duration-500 group-hover:text-[#FFEE50]">
-                <span>let's talk</span>
-                <span className="relative z-10 flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-[#3B3808] text-[#ffee50] transition-colors duration-500 group-hover:bg-[#ffee50] group-hover:text-[#3B3808]">
-                  <ArrowUpRightIcon className="group-hover:hidden" />
-                  <ArrowRightIcon className="hidden group-hover:block" />
-                </span>
-              </div>
+              <span
+                className="pointer-events-none absolute inset-0 rounded-full bg-[#3B3808] transition-transform duration-500 ease-out group-hover:scale-100"
+                style={{
+                  transform: 'scale(0)',
+                  transformOrigin: `${mousePosition.x}% ${mousePosition.y}%`,
+                }}
+              />
+
+              {/* Button Text */}
+              <span className="relative z-10">Get Services</span>
+
+              {/* Arrow Circle */}
+              <span className="relative z-10 flex h-8 w-8 items-center justify-center rounded-full bg-[#3B3808] text-[#ffee50] transition-colors duration-300 group-hover:bg-[#ffee50] group-hover:text-[#3B3808]">
+                <ArrowUpRightIcon />
+              </span>
             </button>
           </div>
 
-          {/* Right Side - Image */}
-          <div className="lg:w-1/2">
-            <div className="relative overflow-hidden rounded-2xl bg-white shadow-sm h-full min-h-[460px]">
-              <div className="relative h-full min-h-[460px] w-full">
+          <div className="relative">
+            <div className="relative overflow-hidden rounded-2xl bg-white shadow-sm">
+              <div className="relative h-[460px] w-full">
                 <Image
                   src="/images/hero-img-2.png"
                   alt="Business"
@@ -213,8 +166,8 @@ export default function GetToKnowUs() {
                   <div className="mt-3 flex items-end gap-2">
                     <div className="h-10 w-5 rounded-md bg-[#ffee50]/20" />
                     <div className="h-14 w-5 rounded-md bg-[#ffee50]/25" />
-                    <div className="h-[72px] w-5 rounded-md bg-[#ffee50]/35" />
-                    <div className="h-[88px] w-5 rounded-md bg-[#ffee50]" />
+                    <div className="h-18 w-5 rounded-md bg-[#ffee50]/35" />
+                    <div className="h-22 w-5 rounded-md bg-[#ffee50]" />
                   </div>
                 </div>
               </div>

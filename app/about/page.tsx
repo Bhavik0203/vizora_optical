@@ -39,44 +39,97 @@ export default function AboutPage() {
           </p>
         </div>
       </section>
-           <GetToKnowUs/>
+           {/* <GetToKnowUs/> */}
       {/* Sub-page navigation */}
       <section style={{ background: '#0a1628', padding: '80px 0' }}>
         <div className="container">
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 24 }}>
-            {subPages.map((p) => (
-              <Link key={p.href} href={p.href} 
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 64, alignItems: 'center' }}>
+            {/* Left side - Grid */}
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 24 }}>
+              {subPages.map((p) => (
+                <Link key={p.href} href={p.href} 
+                  style={{ 
+                    textDecoration: 'none', 
+                    display: 'flex', 
+                    flexDirection: 'column', 
+                    gap: 12, 
+                    padding: '28px 24px', 
+                    background: 'rgba(10, 22, 40, 0.6)',
+                    backdropFilter: 'blur(10px)',
+                    border: '1px solid rgba(255, 255, 255, 0.1)', 
+                    borderRadius: '16px',
+                    transition: 'all 0.25s',
+                    boxShadow: '0 4px 24px rgba(0,0,0,0.2)'
+                  }}
+                  id={`about-nav-${p.title.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z-]/g, '')}`}
+                  onMouseEnter={(e) => { 
+                    (e.currentTarget as HTMLAnchorElement).style.borderColor = 'rgba(21, 101, 192, 0.4)'; 
+                    (e.currentTarget as HTMLAnchorElement).style.background = 'rgba(21, 101, 192, 0.15)';
+                    (e.currentTarget as HTMLAnchorElement).style.transform = 'translateY(-4px)';
+                  }}
+                  onMouseLeave={(e) => { 
+                    (e.currentTarget as HTMLAnchorElement).style.borderColor = 'rgba(255, 255, 255, 0.1)'; 
+                    (e.currentTarget as HTMLAnchorElement).style.background = 'rgba(10, 22, 40, 0.6)';
+                    (e.currentTarget as HTMLAnchorElement).style.transform = 'translateY(0)';
+                  }}
+                >
+                  <span style={{ fontSize: '1.5rem', color: '#fff' }}>{p.icon}</span>
+                  <h4 style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.95rem', fontWeight: 700, color: '#fff' }}>{p.title}</h4>
+                  <p style={{ fontSize: '0.82rem', color: 'rgba(255,255,255,0.6)', lineHeight: 1.6 }}>{p.desc}</p>
+                  <span style={{ fontSize: '0.75rem', fontWeight: 700, color: '#fff', letterSpacing: '0.08em', textTransform: 'uppercase' }}>Read More →</span>
+                </Link>
+              ))}
+            </div>
+            
+            {/* Right side - Image with text overlay */}
+            <div style={{ position: 'relative', borderRadius: '16px', overflow: 'hidden' }}>
+              <img
+                src="/images/image1.jpg"
+                alt="About Vizora Optics"
                 style={{ 
-                  textDecoration: 'none', 
-                  display: 'flex', 
-                  flexDirection: 'column', 
-                  gap: 12, 
-                  padding: '28px 24px', 
-                  background: 'rgba(10, 22, 40, 0.6)',
-                  backdropFilter: 'blur(10px)',
-                  border: '1px solid rgba(255, 255, 255, 0.1)', 
-                  borderRadius: '16px',
-                  transition: 'all 0.25s',
-                  boxShadow: '0 4px 24px rgba(0,0,0,0.2)'
+                  width: '100%', 
+                  height: '500px', 
+                  objectFit: 'cover',
+                  borderRadius: '16px'
                 }}
-                id={`about-nav-${p.title.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z-]/g, '')}`}
-                onMouseEnter={(e) => { 
-                  (e.currentTarget as HTMLAnchorElement).style.borderColor = 'rgba(21, 101, 192, 0.4)'; 
-                  (e.currentTarget as HTMLAnchorElement).style.background = 'rgba(21, 101, 192, 0.15)';
-                  (e.currentTarget as HTMLAnchorElement).style.transform = 'translateY(-4px)';
-                }}
-                onMouseLeave={(e) => { 
-                  (e.currentTarget as HTMLAnchorElement).style.borderColor = 'rgba(255, 255, 255, 0.1)'; 
-                  (e.currentTarget as HTMLAnchorElement).style.background = 'rgba(10, 22, 40, 0.6)';
-                  (e.currentTarget as HTMLAnchorElement).style.transform = 'translateY(0)';
-                }}
-              >
-                <span style={{ fontSize: '1.5rem', color: '#fff' }}>{p.icon}</span>
-                <h4 style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.95rem', fontWeight: 700, color: '#fff' }}>{p.title}</h4>
-                <p style={{ fontSize: '0.82rem', color: 'rgba(255,255,255,0.6)', lineHeight: 1.6 }}>{p.desc}</p>
-                <span style={{ fontSize: '0.75rem', fontWeight: 700, color: '#fff', letterSpacing: '0.08em', textTransform: 'uppercase' }}>Read More →</span>
-              </Link>
-            ))}
+              />
+              {/* Text overlay */}
+              {/* <div style={{
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                right: 0,
+                bottom: 0,
+                background: 'linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.7))',
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'center',
+                alignItems: 'center',
+                padding: '40px',
+                textAlign: 'center'
+              }}>
+                <h2 style={{
+                  color: '#fff',
+                  fontSize: 'clamp(2rem, 3vw, 2.5rem)',
+                  fontWeight: 800,
+                  letterSpacing: '0.1em',
+                  textTransform: 'uppercase',
+                  marginBottom: '20px',
+                  fontFamily: 'Inter, sans-serif'
+                }}>
+                  ABOUT US
+                </h2>
+                <p style={{
+                  color: 'rgba(255,255,255,0.9)',
+                  fontSize: '1.1rem',
+                  lineHeight: 1.6,
+                  maxWidth: '400px',
+                  fontFamily: 'Inter, sans-serif'
+                }}>
+                  Discover our story of innovation, precision, and commitment to excellence in optical technology.
+                </p>
+              </div> */}
+            </div>
           </div>
         </div>
       </section>
@@ -172,7 +225,7 @@ export default function AboutPage() {
       {/* CTA */}
       <section style={{ background: '#0a1628', padding: '80px 0', position: 'relative', overflow: 'hidden' }}>
         {/* Large VIZORA text background */}
-        <div style={{
+        {/* <div style={{
           position: 'absolute',
           bottom: -20,
           left: '50%',
@@ -189,7 +242,7 @@ export default function AboutPage() {
           userSelect: 'none'
         }}>
           VIZORA
-        </div>
+        </div> */}
         <div className="container" style={{ textAlign: 'center', position: 'relative', zIndex: 1 }}>
           <h2 style={{ color: '#fff', marginBottom: 16, fontSize: 'clamp(1.8rem, 3vw, 2.4rem)', fontWeight: 700 }}>Ready to Partner with Vizora Optics?</h2>
           <p style={{ color: 'rgba(255,255,255,0.6)', marginBottom: 32, maxWidth: 500, margin: '0 auto 32px' }}>Join our growing network of trusted optical retailers and distributors.</p>

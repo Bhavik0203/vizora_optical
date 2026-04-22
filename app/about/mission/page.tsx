@@ -31,7 +31,7 @@ export default function MissionPage() {
         <div className="container">
           <div className="grid-2" style={{ gap: 48 }}>
             <div style={{ background: '#0a1628', padding: '48px 40px', borderLeft: '4px solid linear-gradient(135deg, #1565c0, #0097c7)' }}>
-              <span style={{ fontSize: '0.7rem', fontWeight: 700, letterSpacing: '0.18em', color: 'linear-gradient(135deg, #1565c0, #0097c7)', textTransform: 'uppercase' }}>Our Mission</span>
+              <span style={{ fontSize: '0.7rem', fontWeight: 700, letterSpacing: '0.18em', color: '#fff', textTransform: 'uppercase' }}>Our Mission</span>
               <h2 style={{ color: '#fff', marginTop: 12, marginBottom: 20, fontSize: '1.8rem' }}>Empowering Eye Care Through Precision</h2>
               <p style={{ color: 'rgba(255,255,255,0.65)', lineHeight: 1.8 }}>
                 At Vizora Optics, our mission is to empower optical retailers and distributors with superior,

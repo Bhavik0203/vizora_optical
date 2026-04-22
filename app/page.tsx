@@ -139,22 +139,21 @@ export default function HomePage() {
       {/* ── Wear Your Shape ── */}
       <section style={{ background: '#0a1628', padding: '72px 0 80px' }}>
         <style>{`
-          .shape-card { display: flex; flex-direction: column; align-items: center; gap: 20px; cursor: default; }
+          .shape-card { display: flex; flex-direction: column; align-items: center; gap: 0px; cursor: default; }
           .shape-icon-wrap {
             display: flex; align-items: center; justify-content: center;
             transition: transform 0.35s cubic-bezier(0.34,1.56,0.64,1);
           }
           .shape-card:hover .shape-icon-wrap { transform: scale(1.32); }
           .shape-icon-wrap img {
-            filter: brightness(0) invert(1);
             display: block;
-            transition: filter 0.3s ease;
+            transition: transform 0.3s ease;
           }
-          .shape-card:hover .shape-icon-wrap img { filter: brightness(0) invert(1) sepia(1) saturate(4) hue-rotate(5deg) brightness(1.1); }
+          .shape-card:hover .shape-icon-wrap img { transform: scale(1.1); }
         `}</style>
-        {/* <div className="container"> */}
+        <div className="container">
           {/* Heading */}
-          {/* <div style={{ textAlign: 'center', marginBottom: 60 }}>
+          <div style={{ textAlign: 'center', marginBottom: 10 }}>
             <h2 style={{
               color: '#fff',
               fontFamily: 'Inter, sans-serif',
@@ -164,7 +163,7 @@ export default function HomePage() {
               textTransform: 'uppercase',
               marginBottom: 14,
             }}>
-              Wear Your Shape
+              Lens Types
             </h2>
             <p style={{
               color: 'rgba(255,255,255,0.55)',
@@ -174,7 +173,7 @@ export default function HomePage() {
               letterSpacing: '0.22em',
               textTransform: 'uppercase',
             }}>
-              Turn up the heat in our trendiest shapes of the season
+              Advanced optical solutions for every vision need
             </p>
           </div>
 
@@ -187,11 +186,11 @@ export default function HomePage() {
             flexWrap: 'wrap',
           }}>
             {[
-              { src: '/images/Cateye_Icon_2218d707-d80d-4221-bfa8-c7cc25e30484.png',    label: 'Cateye',    size: 130 },
-              { src: '/images/Square_Icon_c7492fda-09bc-4a6a-92f0-c73f00f9451f.png',    label: 'Square',    size: 130 },
-              { src: '/images/Rectangle_icon_bc5eeb4c-1110-4d36-b618-f9442f2cf1b7.png', label: 'Rectangle', size: 130 },
-              { src: '/images/Pilot_Icon_26f3477e-49c1-4724-9977-d3a1d1bb0859.png',     label: 'Pilot',     size: 130 },
-              { src: '/images/Round_Icon_abcdff6e-1d7f-4930-9d40-49b9fd9d5bff.png',     label: 'Round',     size: 130 },
+              { src: '/images/1.png', label: 'Converging', size: 130 },
+              { src: '/images/2.png', label: 'Diverging', size: 130 },
+              { src: '/images/3.png', label: 'Cylindrical Lens', size: 130 },
+              { src: '/images/4.png', label: 'Aspherical Lens', size: 130 },
+              { src: '/images/5.png', label: 'Fresnel Lens', size: 130 },
             ].map((shape) => (
               <div key={shape.label} className="shape-card">
                 <div className="shape-icon-wrap">
@@ -215,8 +214,8 @@ export default function HomePage() {
                 </span>
               </div>
             ))}
-          </div> */}
-        {/* </div> */}
+          </div>
+        </div>
       </section>
 
       {/* ── Products ── */}
