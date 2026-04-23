@@ -1,6 +1,6 @@
 'use client'
 import Link from 'next/link';
-
+import Technologies from '../../components/technologies';
 export default function InnovationPage() {
   return (
     <>
@@ -116,7 +116,7 @@ export default function InnovationPage() {
           </div>
         </div>
       </section>
-
+            <Technologies />
       <section className="section-sm" style={{ background: '#0a1628' }}>
         <div className="container text-center">
           <h2 style={{ color: '#fff', marginBottom: 16 }}>See Our Technology in Action</h2>

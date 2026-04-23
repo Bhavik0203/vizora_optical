@@ -1,5 +1,7 @@
 'use client'
 import Link from 'next/link';
+import ServicesShowcase from '@/app/components/ServicesShowcase';
+import CoreValues from '@/app/components/CoreValues';
 
 const values = [
   { icon: '◈', title: 'Precision', desc: 'Every lens we design and deliver meets the highest standards of optical clarity and accuracy. We do not compromise on quality.' },
@@ -25,7 +27,7 @@ export default function MissionPage() {
           <p>The principles that guide every decision, every product, and every partnership at Vizora Optics.</p>
         </div>
       </section>
-
+    
       {/* Mission & Vision */}
       <section className="section bg-white">
         <div className="container">
@@ -52,59 +54,10 @@ export default function MissionPage() {
         </div>
       </section>
 
-      {/* Core Values */}
-      <section className="section bg-off-white">
-        <div className="container">
-          <div className="text-center" style={{ marginBottom: 56 }}>
-            <span className="section-label">Core Values</span>
-            <h2>What We Stand For</h2>
-            <div className="divider divider-center" />
-          </div>
-          <div className="grid-3" style={{ gap: 24 }}>
-            {values.map((v, i) => (
-              <div key={i} className="card" style={{ position: 'relative', paddingTop: 40 }}>
-                <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 3, background: 'linear-gradient(135deg, #1565c0, #0097c7)' }} />
-                <div style={{ fontSize: '1.8rem', color: 'linear-gradient(135deg, #1565c0, #0097c7)', marginBottom: 16 }}>{v.icon}</div>
-                <h4 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 700, marginBottom: 12 }}>{v.title}</h4>
-                <p style={{ fontSize: '0.88rem', color: '#4a5568', lineHeight: 1.75 }}>{v.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      
 
-      {/* USP Pillars */}
-      <section className="section bg-white">
-        <div className="container">
-          <div className="text-center" style={{ marginBottom: 56 }}>
-            <span className="section-label">Our Commitment</span>
-            <h2>What Sets Us Apart</h2>
-            <div className="divider divider-center" />
-          </div>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
-            {[
-              { num: '01', title: 'Exceptional Optical Precision', desc: 'We deliver lenses engineered for superior visual clarity, precision, and all-day comfort — meeting the expectations of today\'s discerning customers.' },
-              { num: '02', title: 'Advanced Lens Design & Innovation', desc: 'Our portfolio features next-generation lens technologies, including digitally surfaced and high-performance progressive designs.' },
-              { num: '03', title: 'Premium Quality with Strategic Value', desc: 'We combine world-class quality standards with optimized pricing, enabling our partners to offer premium products while maintaining strong profitability.' },
-              { num: '04', title: 'Global Expertise, Consistent Excellence', desc: 'Through carefully selected international manufacturing partnerships, we ensure consistent quality, reliability, and adherence to global optical standards.' },
-              { num: '05', title: 'Seamless & Efficient Supply Chain', desc: 'Our streamlined logistics and fulfillment processes are designed to deliver speed, reliability, and consistency — supporting uninterrupted business operations.' },
-              { num: '06', title: 'Partnership-Driven Approach', desc: 'At Vizora Optics, we go beyond supply — we build long-term partnerships through dedicated support, responsiveness, and a shared commitment to growth.' },
-            ].map((item) => (
-              <div key={item.num} style={{ display: 'flex', gap: 32, padding: '28px 32px', border: '1px solid #e8e8e4', borderBottom: 'none', alignItems: 'flex-start', background: '#fff', transition: 'background 0.2s' }}
-                onMouseEnter={(e) => { (e.currentTarget as HTMLDivElement).style.background = '#f5f5f0'; }}
-                onMouseLeave={(e) => { (e.currentTarget as HTMLDivElement).style.background = '#fff'; }}
-              >
-                <span style={{ fontFamily: 'Playfair Display, serif', fontSize: '1.8rem', fontWeight: 700, color: '#e8e8e4', minWidth: 56 }}>{item.num}</span>
-                <div>
-                  <h4 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 700, marginBottom: 8 }}>{item.title}</h4>
-                  <p style={{ fontSize: '0.9rem', color: '#4a5568' }}>{item.desc}</p>
-                </div>
-              </div>
-            ))}
-            <div style={{ border: '1px solid #e8e8e4', height: 1 }} />
-          </div>
-        </div>
-      </section>
+            <CoreValues />
+      <ServicesShowcase />
 
       <section className="section-sm" style={{ background: '#0a1628' }}>
         <div className="container text-center">

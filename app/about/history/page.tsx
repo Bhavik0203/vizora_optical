@@ -1,5 +1,7 @@
 'use client'
 import Link from 'next/link';
+import VizoraStory from '@/app/components/VizoraStory';
+import { useEffect } from 'react';
 
 const milestones = [
   { year: 'Foundation', title: 'Vizora Optics Established', desc: 'Founded with a clear vision: to bridge the gap between premium optical quality and accessible pricing for eye care professionals across the United States.' },
@@ -11,6 +13,51 @@ const milestones = [
 ];
 
 export default function HistoryPage() {
+  useEffect(() => {
+    const handleScroll = () => {
+      const cards = document.querySelectorAll('.timeline-card');
+      
+      cards.forEach((card) => {
+        const rect = card.getBoundingClientRect();
+        const cardCenter = rect.top + rect.height / 2;
+        const viewportCenter = window.innerHeight / 2;
+        const distance = Math.abs(cardCenter - viewportCenter);
+        const maxDistance = window.innerHeight / 2;
+        
+        // Calculate opacity and transform based on distance from center
+        const opacity = Math.max(0.3, 1 - (distance / maxDistance) * 0.7);
+        const translateY = Math.max(0, (distance / maxDistance) * 30);
+        
+        // Apply styles
+        (card as HTMLElement).style.opacity = opacity.toString();
+        (card as HTMLElement).style.transform = `translateY(${translateY}px)`;
+        
+        // Add color effect when card is near center
+        if (distance < 100) {
+          const intensity = 1 - (distance / 100);
+          (card as HTMLElement).style.background = `linear-gradient(135deg, 
+            rgba(240, 247, 255, ${intensity}), 
+            rgba(230, 243, 255, ${intensity * 0.8}))`;
+          (card as HTMLElement).style.borderColor = `rgba(21, 101, 192, ${intensity})`;
+          (card as HTMLElement).style.boxShadow = `0 ${8 * intensity}px ${25 * intensity}px rgba(21, 101, 192, ${0.15 * intensity})`;
+        } else {
+          (card as HTMLElement).style.background = '#fff';
+          (card as HTMLElement).style.borderColor = '#e8e8e4';
+          (card as HTMLElement).style.boxShadow = 'none';
+        }
+      });
+    };
+
+    // Initial check
+    handleScroll();
+    
+    // Add scroll listener
+    window.addEventListener('scroll', handleScroll);
+    
+    // Cleanup
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
     <>
       <section className="page-hero">
@@ -26,46 +73,11 @@ export default function HistoryPage() {
         </div>
       </section>
 
-      {/* Intro */}
-      <section className="section bg-white">
-        <div className="container">
-          <div className="grid-2" style={{ gap: 64, alignItems: 'center' }}>
-            <div>
-              <span className="section-label">The Vizora Story</span>
-              <h2 style={{ marginBottom: 16 }}>Built on a Foundation of Precision</h2>
-              <div className="divider" />
-              <p style={{ marginBottom: 16 }}>
-                Vizora Optics was born from a deep understanding of what optical professionals truly need —
-                premium quality products, dependable service, and a partner who shares their commitment to
-                customer satisfaction.
-              </p>
-              <p style={{ marginBottom: 16 }}>
-                From our offices in Pittsburgh, PA and Wood Ridge, NJ, we have built a brand that stands for
-                consistency, innovation, and integrity in every lens delivered.
-              </p>
-              <p>
-                Our story is one of careful growth — expanding our product portfolio, deepening manufacturing
-                partnerships, and continuously raising the bar on what optical professionals can expect from
-                their lens supplier.
-              </p>
-            </div>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
-              {[
-                { label: 'Core Values', value: 'Precision, Innovation, Reliability' },
-                { label: 'Headquarters', value: 'Pittsburgh, PA 15288' },
-                { label: 'Communication Office', value: 'Wood Ridge, NJ 07075' },
-                { label: 'Specialty', value: 'Premium Ophthalmic Lenses & Coatings' },
-                { label: 'Focus', value: 'Eye Care Professionals & Distributors' },
-              ].map((item, i) => (
-                <div key={i} style={{ display: 'flex', gap: 0, borderBottom: '1px solid #e8e8e4', paddingBottom: 16 }}>
-                  <span style={{ fontSize: '0.78rem', fontWeight: 700, color: 'linear-gradient(135deg, #1565c0, #0097c7)', letterSpacing: '0.08em', textTransform: 'uppercase', minWidth: 200 }}>{item.label}</span>
-                  <span style={{ fontSize: '0.88rem', color: '#4a5568' }}>{item.value}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
+     
+    
+
+<VizoraStory />
+
 
       {/* Ambient Video – Brand Films */}
       <section style={{ background: '#000', position: 'relative', overflow: 'hidden' }}>
@@ -131,7 +143,29 @@ export default function HistoryPage() {
                 gap: 48, marginBottom: 48, position: 'relative', alignItems: 'flex-start',
               }}>
                 <div style={{ flex: 1, padding: i % 2 === 0 ? '0 40px 0 0' : '0 0 0 40px' }}>
-                  <div style={{ background: '#fff', border: '1px solid #e8e8e4', padding: '28px 28px', transition: 'all 0.2s' }}>
+                  <div 
+                    className="timeline-card"
+                    style={{ 
+                      background: '#fff', 
+                      border: '1px solid #e8e8e4', 
+                      padding: '28px 28px', 
+                      transition: 'all 0.6s ease',
+                      opacity: 0,
+                      transform: 'translateY(30px)'
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.background = 'linear-gradient(135deg, #f0f7ff, #e6f3ff)';
+                      e.currentTarget.style.borderColor = '#1565c0';
+                      e.currentTarget.style.transform = 'translateY(-2px)';
+                      e.currentTarget.style.boxShadow = '0 8px 25px rgba(21, 101, 192, 0.15)';
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.background = '#fff';
+                      e.currentTarget.style.borderColor = '#e8e8e4';
+                      e.currentTarget.style.transform = 'translateY(0)';
+                      e.currentTarget.style.boxShadow = 'none';
+                    }}
+                  >
                     <div style={{ fontSize: '0.7rem', fontWeight: 700, color: 'linear-gradient(135deg, #1565c0, #0097c7)', letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: 8 }}>{m.year}</div>
                     <h4 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 700, marginBottom: 10, fontSize: '1rem' }}>{m.title}</h4>
                     <p style={{ fontSize: '0.85rem', color: '#4a5568', lineHeight: 1.7 }}>{m.desc}</p>
