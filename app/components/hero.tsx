@@ -18,6 +18,26 @@ export function HeroSparkles() {
         overflow: "hidden",
       }}
     >
+      {/* Full-screen sparkles background */}
+      <div
+        style={{
+          position: "absolute",
+          inset: 0,
+          zIndex: 0,
+        }}
+      >
+        <SparklesCore
+          id="vizora-hero-background"
+          background="transparent"
+          minSize={0.5}
+          maxSize={1.5}
+          particleDensity={200}
+          particleColor="#ffffff"
+          speed={2}
+          className="w-full h-full"
+        />
+      </div>
+
       {/* Radial vignette */}
       <div
         style={{
