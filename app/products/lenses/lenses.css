@@ -1,0 +1,497 @@
+/* Lens Grid Layout */
+.lens-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+/* Lens Card Styles */
+.lens-card {
+  display: block;
+  padding: 0;
+  background: #fff;
+  border: none;
+  text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  color: inherit;
+  border-radius: 12px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.lens-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(135deg, #1565c0, #0097c7);
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.lens-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(21, 101, 192, 0.15);
+}
+
+.lens-card:hover::before {
+  transform: scaleX(1);
+}
+
+/* Lens Card Content */
+.lens-card-content {
+  padding: 24px;
+  position: relative;
+  z-index: 1;
+}
+
+.lens-category {
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  color: #1565c0;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.lens-category::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  background: linear-gradient(135deg, #1565c0, #0097c7);
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.lens-name {
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: #0a1628;
+  margin: 0 0 8px 0;
+  line-height: 1.3;
+  transition: color 0.3s ease;
+}
+
+.lens-card:hover .lens-name {
+  color: #1565c0;
+}
+
+.lens-type {
+  font-size: 0.8rem;
+  color: #6b7280;
+  margin: 0;
+  line-height: 1.4;
+  font-weight: 400;
+}
+
+/* Number indicator */
+.lens-number {
+  position: absolute;
+  top: 0px;
+  right: 10px;
+  font-size: 4rem;
+  font-weight: 800;
+  color: rgba(21, 101, 192, 0.08);
+  font-family: 'Inter', sans-serif;
+}
+
+/* Lens Detail Cards */
+.lens-cards-container {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
+.lens-detail-card {
+  display: grid;
+  border: 1px solid #e8e8e4;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  animation: slideInUp 0.6s ease-out forwards;
+  opacity: 0;
+}
+
+.lens-detail-card:hover {
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+/* Layout Variations */
+.layout-left {
+  grid-template-columns: 1fr 1.4fr;
+}
+
+.layout-right {
+  grid-template-columns: 1.4fr 1fr;
+}
+
+.layout-right .lens-info-panel {
+  order: 2;
+}
+
+.layout-right .lens-features-panel {
+  order: 1;
+}
+
+/* Info Panel */
+.lens-info-panel {
+  background: linear-gradient(135deg, #0a1628 0%, #1a2332 100%);
+  padding: 48px 44px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  position: relative;
+  overflow: hidden;
+}
+
+.lens-info-panel::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #1565c0, #0097c7);
+}
+
+.lens-tag {
+  display: inline-block;
+  padding: 6px 16px;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: 'uppercase';
+  border-radius: 20px;
+  align-self: flex-start;
+  margin-bottom: 4px;
+  transition: transform 0.3s ease;
+}
+
+.lens-tag:hover {
+  transform: scale(1.05);
+}
+
+.lens-title {
+  color: #fff;
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  line-height: 1.1;
+  margin: 0;
+  font-weight: 700;
+}
+
+.lens-type-text {
+  font-size: 0.78rem;
+  font-weight: 600;
+  background: linear-gradient(135deg, #1565c0, #0097c7);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.lens-divider {
+  width: 48px;
+  height: 2px;
+  background: linear-gradient(135deg, #1565c0, #0097c7);
+  margin: 8px 0;
+}
+
+.lens-description {
+  font-size: 0.88rem;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.7;
+  margin: 0;
+}
+
+.lens-positioning {
+  background: rgba(21, 101, 192, 0.1);
+  border: 1px solid rgba(21, 101, 192, 0.2);
+  padding: 16px 20px;
+  border-radius: 8px;
+  margin-top: 8px;
+  transition: all 0.3s ease;
+}
+
+.lens-positioning:hover {
+  background: rgba(21, 101, 192, 0.15);
+  transform: translateX(4px);
+}
+
+.positioning-label {
+  font-size: 0.68rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, #1565c0, #0097c7);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+.positioning-text {
+  font-size: 0.82rem;
+  color: rgba(255, 255, 255, 0.6);
+  font-style: italic;
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* Features Panel */
+.lens-features-panel {
+  padding: 48px 44px;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+}
+
+.features-header {
+  margin-bottom: 32px;
+}
+
+.features-title {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: #1565c0;
+  text-transform: uppercase;
+  display: inline-block;
+  position: relative;
+}
+
+.features-underline {
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(135deg, #1565c0, #0097c7);
+  margin-top: 8px;
+  transform: scaleX(0);
+  transform-origin: left;
+  animation: expandWidth 0.8s ease-out 0.3s forwards;
+}
+
+.features-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.feature-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  opacity: 0;
+  animation: fadeInLeft 0.6s ease-out forwards;
+}
+
+.feature-icon {
+  width: 28px;
+  height: 28px;
+  background: #0a1628;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  flex-shrink: 0;
+  margin-top: 2px;
+  transition: all 0.3s ease;
+}
+
+.feature-item:hover .feature-icon {
+  background: linear-gradient(135deg, #1565c0, #0097c7);
+  transform: scale(1.1);
+}
+
+.feature-dot {
+  width: 8px;
+  height: 8px;
+  background: linear-gradient(135deg, #1565c0, #0097c7);
+  border-radius: 50%;
+}
+
+.feature-text {
+  font-size: 0.9rem;
+  color: #4a5568;
+  line-height: 1.6;
+  padding-top: 4px;
+  transition: color 0.3s ease;
+}
+
+.feature-item:hover .feature-text {
+  color: #0a1628;
+}
+
+.ideal-section {
+  margin-top: 32px;
+  padding: 24px 28px;
+  background: #f5f5f0;
+  border: 1px solid #e8e8e4;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.ideal-section:hover {
+  background: #f0f0e8;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.ideal-label {
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: #9a9a96;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.ideal-text {
+  font-size: 0.85rem;
+  color: #4a5568;
+  line-height: 1.65;
+  margin: 0;
+}
+
+.lens-cta {
+  margin-top: 24px;
+}
+
+.lens-enquire-btn {
+  padding: 12px 28px;
+  font-size: 0.8rem;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.lens-enquire-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(21, 101, 192, 0.1), transparent);
+  transition: left 0.5s ease;
+}
+
+.lens-enquire-btn:hover::before {
+  left: 100%;
+}
+
+.lens-enquire-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(21, 101, 192, 0.2);
+}
+
+/* Animations */
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes expandWidth {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+/* Stagger animation delays */
+.lens-detail-card:nth-child(1) { animation-delay: 0.1s; }
+.lens-detail-card:nth-child(2) { animation-delay: 0.2s; }
+.lens-detail-card:nth-child(3) { animation-delay: 0.3s; }
+.lens-detail-card:nth-child(4) { animation-delay: 0.4s; }
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .lens-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+  
+  .layout-left,
+  .layout-right {
+    grid-template-columns: 1fr;
+  }
+  
+  .layout-right .lens-info-panel,
+  .layout-right .lens-features-panel {
+    order: initial;
+  }
+  
+  .lens-info-panel,
+  .lens-features-panel {
+    padding: 32px 28px;
+  }
+  
+  .lens-title {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .lens-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  
+  .lens-card-content {
+    padding: 20px;
+  }
+  
+  .lens-name {
+    font-size: 1rem;
+  }
+  
+  .lens-number {
+    font-size: 1.5rem;
+  }
+  
+  .lens-info-panel,
+  .lens-features-panel {
+    padding: 24px 20px;
+  }
+  
+  .lens-title {
+    font-size: 1.3rem;
+  }
+  
+  .lens-cards-container {
+    gap: 32px;
+  }
+}

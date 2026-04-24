@@ -1,5 +1,7 @@
 'use client'
 import Link from 'next/link';
+import './lenses.css';
+import ProductStyle from '@/app/components/product-style';
 
 const lenses = [
   {
@@ -88,116 +90,151 @@ export default function LensesPage() {
       {/* Series overview */}
       <section className="section-sm bg-off-white">
         <div className="container">
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gap: 2 }}>
-            {lenses.map((l) => (
-              <a key={l.id} href={`#${l.id}`} style={{
-                display: 'block', padding: '20px 24px',
-                background: '#fff', border: '1px solid #e8e8e4',
-                textDecoration: 'none', transition: 'all 0.2s',
-              }}
-                onMouseEnter={(e) => { (e.currentTarget as HTMLAnchorElement).style.borderColor = 'linear-gradient(135deg, #1565c0, #0097c7)'; (e.currentTarget as HTMLAnchorElement).style.background = '#f5f5f0'; }}
-                onMouseLeave={(e) => { (e.currentTarget as HTMLAnchorElement).style.borderColor = '#e8e8e4'; (e.currentTarget as HTMLAnchorElement).style.background = '#fff'; }}
+          <div className="lens-grid">
+            {lenses.map((lens, index) => (
+              <Link
+                key={lens.id}
+                href={`#${lens.id}`}
+                className="lens-card"
               >
-                <div style={{ fontSize: '0.68rem', fontWeight: 700, letterSpacing: '0.12em', color: 'linear-gradient(135deg, #1565c0, #0097c7)', textTransform: 'uppercase', marginBottom: 6 }}>Progressive</div>
-                <h5 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 800, fontSize: '0.95rem', color: '#0a1628', marginBottom: 4 }}>{l.name}</h5>
-                <p style={{ fontSize: '0.75rem', color: '#9a9a96' }}>{l.type}</p>
-              </a>
+                <div className="lens-number">0{index + 1}</div>
+                <div className="lens-card-content">
+                  <div className="lens-category">Progressive</div>
+                  <h5 className="lens-name">{lens.name}</h5>
+                  <p className="lens-type">{lens.type}</p>
+                </div>
+              </Link>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Frame Shape Guide */}
-      <section className="section-sm" style={{ background: '#f5f5f0', borderTop: '1px solid #e8e8e4', borderBottom: '1px solid #e8e8e4' }}>
+     
+      {/* ── Wear Your Shape ── */}
+      <section style={{ background: '#0a1628', padding: '72px 0 80px' }}>
+        <style>{`
+          .shape-card { display: flex; flex-direction: column; align-items: center; gap: 0px; cursor: default; }
+          .shape-icon-wrap {
+            display: flex; align-items: center; justify-content: center;
+            transition: transform 0.35s cubic-bezier(0.34,1.56,0.64,1);
+          }
+          .shape-card:hover .shape-icon-wrap { transform: scale(1.32); }
+          .shape-icon-wrap img {
+            display: block;
+            transition: transform 0.3s ease;
+          }
+          .shape-card:hover .shape-icon-wrap img { transform: scale(1.1); }
+        `}</style>
         <div className="container">
-          <div className="text-center" style={{ marginBottom: 36 }}>
-            <span className="section-label">Frame Shapes</span>
-            <h3 style={{ fontFamily: 'Playfair Display, serif', fontSize: '1.5rem', color: '#0a1628' }}>Compatible Lens Shapes</h3>
-            <p style={{ fontSize: '0.88rem', color: '#4a5568', marginTop: 8 }}>All Vizora progressive lenses are available across our full range of frame styles</p>
+          {/* Heading */}
+          <div style={{ textAlign: 'center', marginBottom: 10 }}>
+            <h2 style={{
+              color: '#fff',
+              fontFamily: 'Inter, sans-serif',
+              fontWeight: 800,
+              fontSize: 'clamp(1.4rem, 3vw, 2rem)',
+              letterSpacing: '0.22em',
+              textTransform: 'uppercase',
+              marginBottom: 14,
+            }}>
+              Lens Types
+            </h2>
+            <p style={{
+              color: 'rgba(255,255,255,0.55)',
+              fontFamily: 'Inter, sans-serif',
+              fontSize: '0.72rem',
+              fontWeight: 600,
+              letterSpacing: '0.22em',
+              textTransform: 'uppercase',
+            }}>
+              Advanced optical solutions for every vision need
+            </p>
           </div>
-          <div style={{ display: 'flex', justifyContent: 'center', gap: 12, flexWrap: 'wrap' }}>
+
+          
+          <div style={{
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            gap: 'clamp(24px, 5vw, 72px)',
+            flexWrap: 'wrap',
+          }}>
             {[
-              { src: '/images/Round_Icon_abcdff6e-1d7f-4930-9d40-49b9fd9d5bff.png', label: 'Round' },
-              { src: '/images/Rectangle_icon_bc5eeb4c-1110-4d36-b618-f9442f2cf1b7.png', label: 'Rectangle' },
-              { src: '/images/Square_Icon_c7492fda-09bc-4a6a-92f0-c73f00f9451f.png', label: 'Square' },
-              { src: '/images/Pilot_Icon_26f3477e-49c1-4724-9977-d3a1d1bb0859.png', label: 'Pilot' },
-              { src: '/images/Cateye_Icon_2218d707-d80d-4221-bfa8-c7cc25e30484.png', label: 'Cat-Eye' },
+              { src: '/images/1.png', label: 'Converging', size: 130 },
+              { src: '/images/2.png', label: 'Diverging', size: 130 },
+              { src: '/images/3.png', label: 'Cylindrical Lens', size: 130 },
+              { src: '/images/4.png', label: 'Aspherical Lens', size: 130 },
+              { src: '/images/5.png', label: 'Fresnel Lens', size: 130 },
             ].map((shape) => (
-              <div key={shape.label} style={{
-                display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 10,
-                background: '#fff', border: '1px solid #e8e8e4',
-                padding: '24px 28px', minWidth: 120,
-                transition: 'all 0.2s', cursor: 'default',
-              }}
-                onMouseEnter={(e) => { (e.currentTarget as HTMLDivElement).style.borderColor = 'linear-gradient(135deg, #1565c0, #0097c7)'; (e.currentTarget as HTMLDivElement).style.boxShadow = '0 4px 16px rgba(0,0,0,0.08)'; }}
-                onMouseLeave={(e) => { (e.currentTarget as HTMLDivElement).style.borderColor = '#e8e8e4'; (e.currentTarget as HTMLDivElement).style.boxShadow = ''; }}
-              >
-                <img
-                  src={shape.src}
-                  alt={`${shape.label} frame shape`}
-                  style={{ width: 56, height: 56, objectFit: 'contain', filter: 'invert(1) sepia(1) saturate(2) hue-rotate(5deg) brightness(0.6)' }}
-                />
-                <span style={{ fontSize: '0.72rem', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#0a1628' }}>{shape.label}</span>
+              <div key={shape.label} className="shape-card">
+                <div className="shape-icon-wrap">
+                  <img
+                    src={shape.src}
+                    alt={shape.label}
+                    width={shape.size}
+                    height={shape.size}
+                    style={{ objectFit: 'contain' }}
+                  />
+                </div>
+                <span style={{
+                  fontFamily: 'Inter, sans-serif',
+                  fontSize: '0.65rem',
+                  fontWeight: 600,
+                  letterSpacing: '0.18em',
+                  textTransform: 'uppercase',
+                  color: 'rgba(255,255,255,0.6)',
+                }}>
+                  {shape.label}
+                </span>
               </div>
             ))}
           </div>
         </div>
       </section>
+            <ProductStyle/>
 
       {/* Individual lens cards */}
       <section className="section bg-white">
-        <div className="container" style={{ display: 'flex', flexDirection: 'column', gap: 48 }}>
-          {lenses.map((lens, i) => (
-            <div key={lens.id} id={lens.id} style={{
-              display: 'grid', gridTemplateColumns: i % 2 === 0 ? '1fr 1.4fr' : '1.4fr 1fr',
-              gap: 0, border: '1px solid #e8e8e4', overflow: 'hidden',
-            }}>
-              {/* Left: Info Panel (always first in DOM order, reorder visually) */}
-              <div style={{
-                background: '#0a1628', padding: '48px 44px',
-                display: 'flex', flexDirection: 'column', gap: 16,
-                order: i % 2 === 0 ? 0 : 1,
-              }}>
-                <div style={{
-                  display: 'inline-block', padding: '4px 12px',
-                  background: lens.tagColor || '#0a1628',
-                  color: lens.tagTextColor || '#fff',
-                  fontSize: '0.68rem', fontWeight: 700,
-                  letterSpacing: '0.14em', textTransform: 'uppercase',
-                  alignSelf: 'flex-start', marginBottom: 4,
-                }}>
+        <div className="lens-cards-container">
+          {lenses.map((lens, index) => (
+            <div key={lens.id} id={lens.id} className={`lens-detail-card ${index % 2 === 0 ? 'layout-left' : 'layout-right'}`}>
+              {/* Info Panel */}
+              <div className="lens-info-panel">
+                <div className="lens-tag" style={{ background: lens.tagColor || '#0a1628', color: lens.tagTextColor || '#fff' }}>
                   {lens.tag}
                 </div>
-                <h2 style={{ color: '#fff', fontFamily: 'Playfair Display, serif', fontSize: '2rem', lineHeight: 1.1 }}>{lens.name}</h2>
-                <p style={{ fontSize: '0.78rem', fontWeight: 600, color: 'linear-gradient(135deg, #1565c0, #0097c7)', letterSpacing: '0.1em', textTransform: 'uppercase' }}>{lens.type}</p>
-                <div style={{ width: 48, height: 2, background: 'linear-gradient(135deg, #1565c0, #0097c7)' }} />
-                <p style={{ fontSize: '0.88rem', color: 'rgba(255,255,255,0.6)', lineHeight: 1.7 }}>{lens.desc}</p>
-                <div style={{ background: 'rgba(184,150,62,0.08)', border: '1px solid rgba(184,150,62,0.2)', padding: '12px 16px', marginTop: 8 }}>
-                  <div style={{ fontSize: '0.68rem', fontWeight: 700, color: 'linear-gradient(135deg, #1565c0, #0097c7)', letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: 4 }}>Positioning</div>
-                  <p style={{ fontSize: '0.82rem', color: 'rgba(255,255,255,0.6)', fontStyle: 'italic' }}>{lens.positioning}</p>
+                <h2 className="lens-title">{lens.name}</h2>
+                <p className="lens-type-text">{lens.type}</p>
+                <div className="lens-divider"></div>
+                <p className="lens-description">{lens.desc}</p>
+                <div className="lens-positioning">
+                  <div className="positioning-label">Positioning</div>
+                  <p className="positioning-text">{lens.positioning}</p>
                 </div>
               </div>
 
-              {/* Right: Features */}
-              <div style={{ padding: '48px 44px', background: '#fff', order: i % 2 === 0 ? 1 : 0 }}>
-                <span style={{ fontSize: '0.7rem', fontWeight: 700, letterSpacing: '0.15em', color: 'linear-gradient(135deg, #1565c0, #0097c7)', textTransform: 'uppercase', borderBottom: '2px solid linear-gradient(135deg, #1565c0, #0097c7)', paddingBottom: 4, display: 'inline-block', marginBottom: 24 }}>Key Features</span>
-                <ul style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
-                  {lens.features.map((f, fi) => (
-                    <li key={fi} style={{ display: 'flex', alignItems: 'flex-start', gap: 14 }}>
-                      <div style={{ width: 28, height: 28, background: '#0a1628', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, marginTop: 2 }}>
-                        <div style={{ width: 8, height: 8, background: 'linear-gradient(135deg, #1565c0, #0097c7)', borderRadius: '50%' }} />
+              {/* Features Panel */}
+              <div className="lens-features-panel">
+                <div className="features-header">
+                  <span className="features-title">Key Features</span>
+                  <div className="features-underline"></div>
+                </div>
+                <ul className="features-list">
+                  {lens.features.map((feature, featureIndex) => (
+                    <li key={featureIndex} className="feature-item" style={{ animationDelay: `${featureIndex * 0.1}s` }}>
+                      <div className="feature-icon">
+                        <div className="feature-dot"></div>
                       </div>
-                      <span style={{ fontSize: '0.9rem', color: '#4a5568', lineHeight: 1.6, paddingTop: 4 }}>{f}</span>
+                      <span className="feature-text">{feature}</span>
                     </li>
                   ))}
                 </ul>
-                <div style={{ marginTop: 32, padding: '20px 24px', background: '#f5f5f0', border: '1px solid #e8e8e4' }}>
-                  <div style={{ fontSize: '0.68rem', fontWeight: 700, color: '#9a9a96', letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: 8 }}>Ideal For</div>
-                  <p style={{ fontSize: '0.85rem', color: '#4a5568', lineHeight: 1.65 }}>{lens.ideal}</p>
+                <div className="ideal-section">
+                  <div className="ideal-label">Ideal For</div>
+                  <p className="ideal-text">{lens.ideal}</p>
                 </div>
-                <div style={{ marginTop: 24 }}>
-                  <Link href="/contact" className="btn btn-outline-navy" style={{ padding: '10px 24px', fontSize: '0.8rem' }}
-                    id={`lens-enquire-${lens.id}`}>
+                <div className="lens-cta">
+                  <Link href="/contact" className="btn btn-outline-navy lens-enquire-btn" id={`lens-enquire-${lens.id}`}>
                     Enquire About This Lens
                   </Link>
                 </div>

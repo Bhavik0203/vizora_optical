@@ -83,7 +83,7 @@ export default function HomePage() {
         </div>
       </div>
 
-   <section style={{ position: 'relative', overflow: 'hidden', height: '520px', background: '#0a1628' }}>
+   <section style={{ position: 'relative', overflow: 'hidden', height: '420px', background: '#0a1628' }}>
   <video
     autoPlay
     muted
@@ -106,7 +106,10 @@ export default function HomePage() {
     position: 'absolute', inset: 0,
     display: 'flex', alignItems: 'center', justifyContent: 'center',
   }}>
-    <button
+    <a
+      href="https://www.solenzara.co.uk/vizorastart.html"
+      target="_blank"
+      rel="noopener noreferrer"
       style={{
         color: '#fff',
         background: 'transparent',
@@ -118,6 +121,8 @@ export default function HomePage() {
         cursor: 'pointer',
         letterSpacing: '0.05em',
         transition: 'background 0.3s ease, border-color 0.3s ease',
+        textDecoration: 'none',
+        display: 'inline-block',
       }}
       onMouseEnter={e => {
         const el = e.currentTarget;
@@ -131,7 +136,7 @@ export default function HomePage() {
       }}
     >
       Explore All Products
-    </button>
+    </a>
   </div>
 </section>
 
