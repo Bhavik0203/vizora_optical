@@ -19,10 +19,113 @@ const facts = [
 export default function VizoraStory() {
   return (
     <section className="section bg-white" style={{ marginTop: '10px' }}>
+      <style>{`
+        /* Mobile Styles for VizoraStory */
+        @media (max-width: 768px) {
+          .vizora-story-banner {
+            padding: 16px 20px !important;
+            gap: 16px !important;
+          }
+          
+          .vizora-story-banner > div {
+            gap: 16px !important;
+          }
+          
+          .vizora-story-banner .divider {
+            height: 24px !important;
+          }
+          
+          .vizora-story-main-grid {
+            grid-template-columns: 1fr !important;
+          }
+          
+          .vizora-story-content {
+            padding: 32px 20px !important;
+          }
+          
+          .vizora-story-content h2 {
+            font-size: 24px !important;
+          }
+          
+          .vizora-story-content p {
+            font-size: 0.9rem !important;
+          }
+          
+          .vizora-story-fact {
+            padding: 20px 20px !important;
+            border-left: none !important;
+            border-bottom: 0.5px solid #e2e8f0 !important;
+          }
+          
+          .vizora-story-fact .ghost-number {
+            font-size: 48px !important;
+            right: 12px !important;
+          }
+          
+          .vizora-story-fact .fact-label {
+            font-size: 9px !important;
+            margin-bottom: 6px !important;
+          }
+          
+          .vizora-story-fact .fact-value {
+            font-size: 13px !important;
+            max-width: 200px !important;
+          }
+        }
+        
+        @media (max-width: 480px) {
+          .vizora-story-banner {
+            padding: 12px 16px !important;
+            flex-direction: column !important;
+            align-items: flex-start !important;
+          }
+          
+          .vizora-story-banner > div {
+            gap: 12px !important;
+            width: 100% !important;
+          }
+          
+          .vizora-story-banner .divider {
+            display: none !important;
+          }
+          
+          .vizora-story-content {
+            padding: 24px 16px !important;
+          }
+          
+          .vizora-story-content h2 {
+            font-size: 20px !important;
+          }
+          
+          .vizora-story-content p {
+            font-size: 0.85rem !important;
+          }
+          
+          .vizora-story-fact {
+            padding: 16px 16px !important;
+          }
+          
+          .vizora-story-fact .ghost-number {
+            font-size: 36px !important;
+            right: 8px !important;
+          }
+          
+          .vizora-story-fact .fact-label {
+            font-size: 8px !important;
+            margin-bottom: 4px !important;
+          }
+          
+          .vizora-story-fact .fact-value {
+            font-size: 12px !important;
+            max-width: 180px !important;
+          }
+        }
+      `}</style>
       <div className="container" style={{ padding: 0 }}>
 
         {/* Top Banner */}
         <div
+          className="vizora-story-banner"
           style={{
             background: "#0C1F3F",
             padding: "20px 36px",
@@ -54,6 +157,7 @@ export default function VizoraStory() {
               </div>
               {i < bannerItems.length - 1 && (
                 <div
+                  className="divider"
                   style={{
                     width: "0.5px",
                     height: 36,
@@ -66,10 +170,11 @@ export default function VizoraStory() {
         </div>
 
         {/* Main Grid */}
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr" }}>
+        <div className="vizora-story-main-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr" }}>
 
           {/* Left: Story */}
           <div
+            className="vizora-story-content"
             style={{
               padding: "52px 44px 52px 36px",
               background: "#fff",
@@ -157,6 +262,7 @@ export default function VizoraStory() {
             {facts.map((fact, i) => (
               <div
                 key={i}
+                className="vizora-story-fact"
                 style={{
                   flex: 1,
                   padding: "28px 32px",
@@ -172,6 +278,7 @@ export default function VizoraStory() {
               >
                 {/* Ghost Number */}
                 <span
+                  className="ghost-number"
                   style={{
                     position: "absolute",
                     right: 16,
@@ -190,6 +297,7 @@ export default function VizoraStory() {
                 </span>
 
                 <div
+                  className="fact-label"
                   style={{
                     fontSize: 10,
                     fontWeight: 500,
@@ -202,6 +310,7 @@ export default function VizoraStory() {
                   {fact.label}
                 </div>
                 <div
+                  className="fact-value"
                   style={{
                     fontSize: 14,
                     fontWeight: 600,

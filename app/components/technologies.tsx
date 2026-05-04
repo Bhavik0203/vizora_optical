@@ -110,7 +110,7 @@ export default function Technologies() {
 
                 {/* Hover Image - positioned absolutely to the right */}
                 {hoveredItem === item.num && (
-                  <div style={{
+                  <div className="hover-image" style={{
                     position: 'absolute',
                     right: 40,
                     top: '50%',
@@ -148,6 +148,12 @@ export default function Technologies() {
           to {
             opacity: 1;
             transform: translateY(-50%) translateX(0);
+          }
+        }
+        
+        @media (max-width: 768px) {
+          .hover-image {
+            display: none !important;
           }
         }
       `}</style>
