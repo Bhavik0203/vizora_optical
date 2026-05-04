@@ -174,8 +174,8 @@ const ProductStyle = ({ onApplyNowClick: _onApplyNowClick }: ProductStyleProps) 
                     gap: '12px',
                     zIndex: 2,
                   }}>
-                    <lens.icon size={36} strokeWidth={1.9} />
-                    <div style={{
+                    {/* <lens.icon size={36} strokeWidth={1.9} /> */}
+                    {/* <div style={{
                       background: 'rgba(255,255,255,0.92)',
                       borderRadius: '50px',
                       padding: '6px 16px',
@@ -185,7 +185,7 @@ const ProductStyle = ({ onApplyNowClick: _onApplyNowClick }: ProductStyleProps) 
                       backdropFilter: 'blur(8px)',
                     }}>
                       {lens.count}
-                    </div>
+                    </div> */}
                   </div>
                 </div>
 
@@ -194,7 +194,7 @@ const ProductStyle = ({ onApplyNowClick: _onApplyNowClick }: ProductStyleProps) 
                   {/* Header Section */}
                   <div className={styles.contentHeader}>
                     {/* Category pill */}
-                    <span 
+                    {/* <span 
                       className={styles.categoryPill} 
                       style={{ 
                         color: lens.tagTextColor || '#ffffff',
@@ -202,7 +202,7 @@ const ProductStyle = ({ onApplyNowClick: _onApplyNowClick }: ProductStyleProps) 
                       }}
                     >
                       {lens.tag}
-                    </span>
+                    </span> */}
 
                     <h2 className={styles.productHeading} style={{ color: '#ffffff' }}>
                       {lens.name}
@@ -243,9 +243,9 @@ const ProductStyle = ({ onApplyNowClick: _onApplyNowClick }: ProductStyleProps) 
 
                   {/* Footer */}
                   <div className={styles.cardFooter}>
-                    <span className={styles.countText} style={{ color: '#ffffff' }}>
+                    {/* <span className={styles.countText} style={{ color: '#ffffff' }}>
                       Premium Optical Solution
-                    </span>
+                    </span> */}
                     <Link href={lens.href} className={styles.exploreLink} style={{ color: '#ffffff', borderColor: 'rgba(255,255,255,0.25)' }}>
                       Explore <ArrowRight size={14} />
                     </Link>

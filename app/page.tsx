@@ -50,38 +50,125 @@ export default function HomePage() {
       <HeroSparkles />
 
       {/* ── Announcement bar ── */}
-      <div style={{ background: 'linear-gradient(135deg, #1565c0, #0097c7)', padding: '14px 0' }}>
-        <div className="container flex-between" style={{ flexWrap: 'wrap', gap: 12 }}>
-          <p style={{ fontSize: '0.82rem', fontWeight: 600, color: 'white', letterSpacing: '0.04em' }}>
-            Now Available: V INFINITY 4K - Ultra-Premium Digital Progressive Lens
-          </p>
-          <div style={{ display: 'flex', gap: 16, alignItems: 'center' }}>
-            <Link href="/products/lenses" style={{ fontSize: '0.78rem', fontWeight: 700, color: 'white', textDecoration: 'underline', letterSpacing: '0.06em' }}>
-              Learn More →
-            </Link>
-            <a 
-              href="https://www.solenzara.co.uk/vizorastart.html" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              style={{ 
-                fontSize: '0.78rem', 
-                fontWeight: 700, 
-                color: 'white', 
-                background: 'rgba(255,255,255,0.2)',
-                padding: '6px 12px',
-                borderRadius: '4px',
-                textDecoration: 'none', 
-                letterSpacing: '0.06em',
-                transition: 'background 0.3s ease'
-              }}
-              onMouseEnter={(e) => { e.currentTarget.style.background = 'rgba(255,255,255,0.3)' }}
-              onMouseLeave={(e) => { e.currentTarget.style.background = 'rgba(255,255,255,0.2)' }}
-            >
-              Order Online →
-            </a>
+      <div style={{ background: 'linear-gradient(135deg, #1565c0, #0097c7)', padding: '14px 0' }} className="announcement-bar">
+        <div className="container" style={{ padding: '0 20px' }}>
+          <div style={{ 
+            display: 'flex', 
+            flexDirection: 'row', 
+            alignItems: 'center', 
+            justifyContent: 'space-between',
+            flexWrap: 'wrap', 
+            gap: 12 
+          }}>
+            <p style={{ 
+              fontSize: '0.82rem', 
+              fontWeight: 600, 
+              color: 'white', 
+              letterSpacing: '0.04em',
+              margin: 0,
+              flex: 1,
+              minWidth: 0,
+              textAlign: 'center'
+            }} className="announcement-text">
+              Now Available: V INFINITY 4K - Ultra-Premium Digital Progressive Lens
+            </p>
+            <div style={{ 
+              display: 'flex', 
+              gap: 12, 
+              alignItems: 'center',
+              flexShrink: 0
+            }} className="announcement-actions">
+              <Link 
+                href="/products/lenses" 
+                style={{ 
+                  fontSize: '0.78rem', 
+                  fontWeight: 700, 
+                  color: 'white', 
+                  textDecoration: 'underline', 
+                  letterSpacing: '0.06em',
+                  whiteSpace: 'nowrap'
+                }}
+              >
+                Learn More →
+              </Link>
+              <a 
+                href="https://www.solenzara.co.uk/vizorastart.html" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                style={{ 
+                  fontSize: '0.78rem', 
+                  fontWeight: 700, 
+                  color: 'white', 
+                  background: 'rgba(255,255,255,0.2)',
+                  padding: '6px 12px',
+                  borderRadius: '4px',
+                  textDecoration: 'none', 
+                  letterSpacing: '0.06em',
+                  transition: 'background 0.3s ease',
+                  whiteSpace: 'nowrap'
+                }}
+                onMouseEnter={(e) => { e.currentTarget.style.background = 'rgba(255,255,255,0.3)' }}
+                onMouseLeave={(e) => { e.currentTarget.style.background = 'rgba(255,255,255,0.2)' }}
+              >
+                Order Online →
+              </a>
+            </div>
           </div>
         </div>
       </div>
+
+      <style>{`
+        @media (max-width: 768px) {
+          .announcement-bar {
+            padding: 12px 0 !important;
+          }
+          
+          .announcement-bar .container {
+            padding: 0 16px !important;
+          }
+          
+          .announcement-bar > div > div {
+            flex-direction: column !important;
+            text-align: center !important;
+            gap: 16px !important;
+          }
+          
+          .announcement-text {
+            font-size: 0.78rem !important;
+            line-height: 1.4 !important;
+            text-align: center !important;
+            padding: 0 8px !important;
+          }
+          
+          .announcement-actions {
+            flex-direction: column !important;
+            width: 100% !important;
+            gap: 8px !important;
+            align-items: center !important;
+          }
+          
+          .announcement-actions a,
+          .announcement-actions link {
+            width: 100% !important;
+            text-align: center !important;
+            padding: 8px 16px !important;
+            display: block !important;
+          }
+        }
+        
+        @media (max-width: 480px) {
+          .announcement-text {
+            font-size: 0.75rem !important;
+            line-height: 1.3 !important;
+          }
+          
+          .announcement-actions a,
+          .announcement-actions link {
+            font-size: 0.72rem !important;
+            padding: 8px 12px !important;
+          }
+        }
+      `}</style>
 
    <section style={{ position: 'relative', overflow: 'hidden', height: '420px', background: '#0a1628' }}>
   <video
@@ -291,7 +378,7 @@ export default function HomePage() {
           }
           @media (max-width: 768px) {
             .prod-panel { grid-template-columns: 1fr; }
-            .prod-video-cell { min-height: 320px; }
+            .prod-video-cell { display: none !important; }
             .prod-detail { padding: 48px 28px; min-height: auto; }
             .prod-detail-name-bg span { font-size: 2.5rem; }
           }
@@ -402,8 +489,7 @@ export default function HomePage() {
         position: 'relative',
         padding: '60px 0',
         overflow: 'hidden'
-        
-      }}>
+      }} id="lens-coatings-section">
         {/* Background decoration */}
         <div style={{
           position: 'absolute',
@@ -792,6 +878,115 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      <style>{`
+        #lens-coatings-section .container > div:first-child {
+          margin-bottom: 40px;
+        }
+        
+        /* Mobile Styles for Lens Coatings Section */
+        @media (max-width: 768px) {
+          #lens-coatings-section {
+            padding: 40px 0 !important;
+          }
+          
+          #lens-coatings-section .container {
+            padding: 0 16px !important;
+          }
+          
+          #lens-coatings-section .container > div:first-child {
+            margin-bottom: 32px !important;
+          }
+          
+          #lens-coatings-section h2 {
+            font-size: 1.8rem !important;
+            margin-bottom: 12px !important;
+          }
+          
+          #lens-coatings-section p {
+            font-size: 0.85rem !important;
+            margin: 16px auto !important;
+          }
+          
+          /* Change grid layout for mobile */
+          #lens-coatings-section > div > div:last-child {
+            display: flex !important;
+            flex-direction: column !important;
+            gap: 24px !important;
+            height: auto !important;
+          }
+          
+          /* Hide video on mobile */
+          #lens-coatings-section > div > div:last-child > div:nth-child(2) {
+            display: none !important;
+          }
+          
+          /* Stack coating cards in 2x2 grid */
+          #lens-coatings-section > div > div:last-child > div:first-child,
+          #lens-coatings-section > div > div:last-child > div:last-child {
+            display: grid !important;
+            grid-template-columns: 1fr 1fr !important;
+            grid-template-rows: auto !important;
+            gap: 16px !important;
+            height: auto !important;
+          }
+          
+          /* Adjust card heights */
+          #lens-coatings-section > div > div:last-child > div > div {
+            height: auto !important;
+            min-height: 200px !important;
+            padding: 20px !important;
+          }
+          
+          /* Adjust typography in cards */
+          #lens-coatings-section > div > div:last-child > div > div h3 {
+            font-size: 1.1rem !important;
+            margin-bottom: 6px !important;
+          }
+          
+          #lens-coatings-section > div > div:last-child > div > div p {
+            font-size: 0.8rem !important;
+            margin-bottom: 8px !important;
+          }
+          
+          #lens-coatings-section > div > div:last-child > div > div > div:last-child {
+            font-size: 0.75rem !important;
+          }
+        }
+        
+        /* Small mobile adjustments */
+        @media (max-width: 480px) {
+          #lens-coatings-section {
+            padding: 32px 0 !important;
+          }
+          
+          #lens-coatings-section h2 {
+            font-size: 1.6rem !important;
+          }
+          
+          /* Single column on very small screens */
+          #lens-coatings-section > div > div:last-child > div:first-child,
+          #lens-coatings-section > div > div:last-child > div:last-child {
+            grid-template-columns: 1fr !important;
+            gap: 12px !important;
+          }
+          
+          #lens-coatings-section > div > div:last-child > div > div {
+            min-height: 180px !important;
+            padding: 16px !important;
+          }
+          
+          #lens-coatings-section > div > div:last-child > div > div > div:first-child {
+            width: 40px !important;
+            height: 40px !important;
+            margin-bottom: 12px !important;
+          }
+          
+          #lens-coatings-section > div > div:last-child > div > div > div:first-child span {
+            font-size: 1.2rem !important;
+          }
+        }
+      `}</style>
 
       {/* ── Testimonials ── */}
       <Testimonials />

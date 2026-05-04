@@ -3,6 +3,77 @@ import Link from 'next/link';
 import './lenses.css';
 import ProductStyle from '@/app/components/product-style';
 
+// Mobile responsive styles for fashion video section
+const FashionVideoStyles = () => (
+  <style>{`
+    /* Mobile Styles for Fashion Video Section */
+    @media (max-width: 768px) {
+      .fashion-video-section {
+        padding: 60px 0 !important;
+      }
+      
+      .fashion-video-section .container {
+        padding: 0 16px !important;
+      }
+      
+      .fashion-video-section .video-grid {
+        grid-template-columns: 1fr !important;
+        gap: 32px !important;
+      }
+      
+      .fashion-video-section .video-content {
+        text-align: center !important;
+      }
+      
+      .fashion-video-section .video-content h2 {
+        font-size: 1.8rem !important;
+        margin-bottom: 12px !important;
+      }
+      
+      .fashion-video-section .video-content p {
+        font-size: 0.9rem !important;
+        line-height: 1.6 !important;
+        margin-bottom: 16px !important;
+      }
+      
+      .fashion-video-section .video-content p:last-of-type {
+        font-size: 0.85rem !important;
+        margin-bottom: 24px !important;
+      }
+      
+      .fashion-video-section .video-wrapper video {
+        height: 280px !important;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .fashion-video-section {
+        padding: 40px 0 !important;
+      }
+      
+      .fashion-video-section .video-grid {
+        gap: 24px !important;
+      }
+      
+      .fashion-video-section .video-content h2 {
+        font-size: 1.6rem !important;
+      }
+      
+      .fashion-video-section .video-content p {
+        font-size: 0.85rem !important;
+      }
+      
+      .fashion-video-section .video-content p:last-of-type {
+        font-size: 0.8rem !important;
+      }
+      
+      .fashion-video-section .video-wrapper video {
+        height: 220px !important;
+      }
+    }
+  `}</style>
+);
+
 const lenses = [
   {
     id: 'v-select-hd',
@@ -74,6 +145,7 @@ const lenses = [
 export default function LensesPage() {
   return (
     <>
+      <FashionVideoStyles />
       <section className="page-hero">
         <div className="container">
           <nav className="breadcrumb">
@@ -83,7 +155,7 @@ export default function LensesPage() {
           </nav>
           <span className="section-label">Progressive Lens Series</span>
           <h1 style={{ marginBottom: 16 }}>Optical Lenses</h1>
-          <p>Four premium progressive lens designs engineered for every segment — from everyday reliability to ultra-premium 4K clarity.</p>
+          <p>Four premium progressive lens designs engineered for every segment - from everyday reliability to ultra-premium 4K clarity.</p>
         </div>
       </section>
 
@@ -194,11 +266,11 @@ export default function LensesPage() {
             <ProductStyle/>
 
       {/* Individual lens cards */}
-      <section className="section bg-white">
+      {/* <section className="section bg-white">
         <div className="lens-cards-container">
           {lenses.map((lens, index) => (
             <div key={lens.id} id={lens.id} className={`lens-detail-card ${index % 2 === 0 ? 'layout-left' : 'layout-right'}`}>
-              {/* Info Panel */}
+           
               <div className="lens-info-panel">
                 <div className="lens-tag" style={{ background: lens.tagColor || '#0a1628', color: lens.tagTextColor || '#fff' }}>
                   {lens.tag}
@@ -213,7 +285,6 @@ export default function LensesPage() {
                 </div>
               </div>
 
-              {/* Features Panel */}
               <div className="lens-features-panel">
                 <div className="features-header">
                   <span className="features-title">Key Features</span>
@@ -242,19 +313,19 @@ export default function LensesPage() {
             </div>
           ))}
         </div>
-      </section>
+      </section> */}
 
       {/* Fashion Video Section */}
-      <section style={{ background: '#0a1628', padding: '80px 0', position: 'relative', overflow: 'hidden' }}>
+      <section className="fashion-video-section" style={{ background: '#0a1628', padding: '80px 0', position: 'relative', overflow: 'hidden' }}>
         <div className="container">
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 64, alignItems: 'center' }}>
+          <div className="video-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 64, alignItems: 'center' }}>
             {/* Text */}
-            <div>
+            <div className="video-content">
               <span className="section-label">Style in Motion</span>
               <h2 style={{ color: '#fff', marginBottom: 16 }}>See Our Lenses in Action</h2>
               <div style={{ width: 48, height: 2, background: 'linear-gradient(135deg, #1565c0, #0097c7)', marginBottom: 24 }} />
               <p style={{ color: 'rgba(255,255,255,0.65)', lineHeight: 1.8, marginBottom: 16 }}>
-                From bold cat-eye frames to sleek pilots, our progressive lenses are engineered to perform beautifully in every style — delivering clarity without compromise.
+                From bold cat-eye frames to sleek pilots, our progressive lenses are engineered to perform beautifully in every style - delivering clarity without compromise.
               </p>
               <p style={{ color: 'rgba(255,255,255,0.45)', fontSize: '0.88rem', lineHeight: 1.7, marginBottom: 32 }}>
                 Every Vizora lens is crafted to complement modern eyewear aesthetics while maintaining the highest optical standards.
@@ -262,8 +333,8 @@ export default function LensesPage() {
               <Link href="/contact" className="btn btn-primary" id="lenses-video-enquire">Enquire for Partnership</Link>
             </div>
             {/* Video */}
-            <div style={{ position: 'relative', overflow: 'hidden', border: '1px solid rgba(184,150,62,0.25)' }}>
-              <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 3, background: 'linear-gradient(135deg, #1565c0, #0097c7)', zIndex: 1 }} />
+            <div className="video-wrapper" style={{ position: 'relative', overflow: 'hidden', border: '1px solid rgba(184,150,62,0.25)' }}>
+              {/* <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 3, background: 'linear-gradient(135deg, #1565c0, #0097c7)', zIndex: 1 }} /> */}
               <video
                 autoPlay
                 muted
@@ -271,7 +342,7 @@ export default function LensesPage() {
                 playsInline
                 style={{ width: '100%', height: '360px', objectFit: 'cover', objectPosition: 'center', display: 'block' }}
               >
-                <source src="/images/From KlickPin CF which one sunglassesfashion sunglasses fyp unboxing foryou [Video] _ Creative sunglasses Sunglass photoshoot Fashion videos.mp4" type="video/mp4" />
+                <source src="/images/browncolorlens.mp4" type="video/mp4" />
               </video>
             </div>
           </div>

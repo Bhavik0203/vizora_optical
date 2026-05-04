@@ -88,10 +88,50 @@ export default function TechnologyPage() {
 
       {/* Tier Overview */}
       <section className="section-sm bg-off-white">
+        <style>{`
+          /* Mobile Styles for Tier Overview */
+          @media (max-width: 768px) {
+            .tier-overview-grid {
+              grid-template-columns: repeat(2, 1fr) !important;
+              gap: 8px !important;
+            }
+            
+            .tier-card {
+              padding: 16px !important;
+            }
+            
+            .tier-card span:first-child {
+              font-size: 1.1rem !important;
+            }
+            
+            .tier-card h5 {
+              font-size: 0.8rem !important;
+            }
+            
+            .tier-card > div:nth-child(3) {
+              font-size: 0.7rem !important;
+            }
+            
+            .tier-card > div:last-child {
+              font-size: 0.7rem !important;
+            }
+          }
+          
+          @media (max-width: 480px) {
+            .tier-overview-grid {
+              grid-template-columns: 1fr !important;
+              gap: 4px !important;
+            }
+            
+            .tier-card {
+              padding: 12px !important;
+            }
+          }
+        `}</style>
         <div className="container">
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gap: 2 }}>
+          <div className="tier-overview-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gap: 2 }}>
             {coatings.map((c) => (
-              <a key={c.id} href={`#${c.id}`} style={{
+              <a key={c.id} href={`#${c.id}`} className="tier-card" style={{
                 display: 'flex', flexDirection: 'column', gap: 8,
                 padding: '20px 24px', background: '#fff', border: '1px solid #e8e8e4',
                 textDecoration: 'none', transition: 'all 0.2s',
@@ -111,10 +151,70 @@ export default function TechnologyPage() {
 
       {/* Coating Details */}
       <section className="section bg-white">
+        <style>{`
+          /* Mobile Styles for Coating Details */
+          @media (max-width: 768px) {
+            .coating-header {
+              padding: 24px 20px !important;
+              flex-direction: column !important;
+              gap: 16px !important;
+              text-align: center !important;
+            }
+            
+            .coating-header span:first-child {
+              font-size: 1.5rem !important;
+            }
+            
+            .coating-header h3 {
+              font-size: 1.3rem !important;
+              margin-bottom: 8px !important;
+            }
+            
+            .coating-header p {
+              font-size: 0.85rem !important;
+              max-width: none !important;
+            }
+            
+            .coating-header > div:last-child {
+              text-align: center !important;
+            }
+            
+            .coating-details {
+              grid-template-columns: 1fr !important;
+            }
+            
+            .coating-details > div {
+              padding: 24px 20px !important;
+            }
+            
+            .coating-details > div:first-child {
+              border-right: none !important;
+              border-bottom: 1px solid #e8e8e4 !important;
+            }
+          }
+          
+          @media (max-width: 480px) {
+            .coating-header {
+              padding: 20px 16px !important;
+            }
+            
+            .coating-header h3 {
+              font-size: 1.2rem !important;
+            }
+            
+            .coating-header p {
+              font-size: 0.8rem !important;
+            }
+            
+            .coating-details > div {
+              padding: 20px 16px !important;
+            }
+          }
+        `}</style>
         <div className="container" style={{ display: 'flex', flexDirection: 'column', gap: 32 }}>
           {coatings.map((c) => (
             <div key={c.id} id={c.id} style={{ border: '1px solid #e8e8e4', overflow: 'hidden' }}>
-              <div style={{ background: '#0a1628', padding: '32px 40px', display: 'flex', alignItems: 'flex-start', gap: 24, borderLeft: '4px solid linear-gradient(135deg, #1565c0, #0097c7)' }}>
+              <div className="coating-header" style={{ background: '#0a1628', padding: '32px 40px', display: 'flex', alignItems: 'flex-start', gap: 24, borderLeft: '4px solid linear-gradient(135deg, #1565c0, #0097c7)' }}>
                 <span style={{ fontSize: '2rem', color: 'linear-gradient(135deg, #1565c0, #0097c7)' }}>{c.icon}</span>
                 <div style={{ flex: 1 }}>
                   <div style={{ display: 'flex', gap: 12, alignItems: 'center', flexWrap: 'wrap', marginBottom: 8 }}>
@@ -129,7 +229,7 @@ export default function TechnologyPage() {
                   <div style={{ fontSize: '0.85rem', color: 'linear-gradient(135deg, #1565c0, #0097c7)', fontWeight: 600 }}>{c.bestFor}</div>
                 </div>
               </div>
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 0 }}>
+              <div className="coating-details" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 0 }}>
                 <div style={{ padding: '32px 40px', borderRight: '1px solid #e8e8e4' }}>
                   <div style={{ fontSize: '0.7rem', fontWeight: 700, color: 'linear-gradient(135deg, #1565c0, #0097c7)', letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: 16 }}>Technology</div>
                   <p style={{ fontSize: '0.88rem', color: '#4a5568', lineHeight: 1.75 }}>{c.technology}</p>
@@ -147,7 +247,63 @@ export default function TechnologyPage() {
       </section>
 
       {/* Tier Table */}
-      <section className="section bg-off-white">
+      <section className="section bg-off-white comparison-section">
+        <style>{`
+          /* Mobile Styles for Tier Comparison Table */
+          @media (max-width: 768px) {
+            .comparison-section .container {
+              padding: 0 16px !important;
+            }
+            
+            .comparison-section .text-center {
+              margin-bottom: 32px !important;
+            }
+            
+            .comparison-section .data-table {
+              font-size: 0.8rem !important;
+            }
+            
+            .comparison-section .data-table th,
+            .comparison-section .data-table td {
+              padding: 12px 8px !important;
+            }
+            
+            .comparison-section .data-table th:first-child,
+            .comparison-section .data-table td:first-child {
+              padding-left: 12px !important;
+            }
+            
+            .comparison-section .data-table th:last-child,
+            .comparison-section .data-table td:last-child {
+              padding-right: 12px !important;
+            }
+          }
+          
+          @media (max-width: 480px) {
+            .comparison-section .text-center {
+              margin-bottom: 24px !important;
+            }
+            
+            .comparison-section .data-table {
+              font-size: 0.75rem !important;
+            }
+            
+            .comparison-section .data-table th,
+            .comparison-section .data-table td {
+              padding: 8px 4px !important;
+            }
+            
+            .comparison-section .data-table th:first-child,
+            .comparison-section .data-table td:first-child {
+              padding-left: 8px !important;
+            }
+            
+            .comparison-section .data-table th:last-child,
+            .comparison-section .data-table td:last-child {
+              padding-right: 8px !important;
+            }
+          }
+        `}</style>
         <div className="container">
           <div className="text-center" style={{ marginBottom: 48 }}>
             <span className="section-label">Tier Positioning</span>

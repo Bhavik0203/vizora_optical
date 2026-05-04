@@ -102,6 +102,9 @@ const col1 = testimonials.slice(0, 4);
 const col2 = testimonials.slice(4, 8);
 const col3 = testimonials.slice(8, 12);
 
+// Mobile: First 3 testimonials for single column
+const mobileTestimonials = testimonials.slice(0, 3);
+
 function TestimonialCard({ t }: { t: Testimonial }) {
   return (
     <div
@@ -230,12 +233,81 @@ function MarqueeColumn({ items, duration }: { items: Testimonial[]; duration: nu
 
 export default function Testimonials() {
   return (
-    <section style={{ background: '#f8fafc', padding: '80px 0', overflow: 'hidden' }}>
+    <section style={{ background: '#f8fafc', padding: '80px 0', overflow: 'hidden' }} className="testimonials-section">
       {/* CSS Animations */}
       <style>{`
         @keyframes marquee-up {
           0% { transform: translateY(0); }
           100% { transform: translateY(-33.333%); }
+        }
+        
+        /* Mobile Styles */
+        @media (max-width: 768px) {
+          .testimonials-section {
+            padding: 60px 0 !important;
+          }
+          
+          .testimonials-section .container {
+            padding: 0 16px !important;
+          }
+          
+          .testimonials-section .container > div:first-child {
+            margin-bottom: 40px !important;
+          }
+          
+          .testimonials-section h2 {
+            font-size: 1.8rem !important;
+            margin-bottom: 10px !important;
+          }
+          
+          .testimonials-section p {
+            font-size: 0.9rem !important;
+            max-width: 400px !important;
+          }
+          
+          /* Hide desktop columns on mobile */
+          .testimonials-section .desktop-columns {
+            display: none !important;
+          }
+          
+          /* Show mobile column */
+          .testimonials-section .mobile-column {
+            display: block !important;
+          }
+          
+          /* Adjust mobile testimonial cards */
+          .mobile-testimonial-card {
+            min-width: auto !important;
+            max-width: none !important;
+            padding: 20px !important;
+            margin-bottom: 16px !important;
+          }
+          
+          .mobile-testimonial-card p:first-child {
+            font-size: 0.85rem !important;
+            margin-bottom: 16px !important;
+          }
+          
+          .mobile-testimonial-card .author-avatar {
+            width: 36px !important;
+            height: 36px !important;
+            font-size: 0.9rem !important;
+          }
+          
+          .mobile-testimonial-card .author-name {
+            font-size: 0.85rem !important;
+          }
+          
+          .mobile-testimonial-card .author-title {
+            font-size: 0.75rem !important;
+          }
+        }
+        
+        @media (min-width: 769px) {
+          /* Hide mobile column on desktop */
+          .testimonials-section .mobile-column {
+            display: none !important;
+          }
         }
       `}</style>
 
@@ -266,8 +338,9 @@ export default function Testimonials() {
           </p>
         </div>
 
-        {/* 3 Columns - Vertical Scrolling */}
+        {/* Desktop: 3 Columns - Vertical Scrolling */}
         <div
+          className="desktop-columns"
           style={{
             display: 'grid',
             gridTemplateColumns: 'repeat(3, 1fr)',
@@ -284,6 +357,102 @@ export default function Testimonials() {
 
           {/* Column 3 - Fast speed */}
           <MarqueeColumn items={col3} duration={25} />
+        </div>
+
+        {/* Mobile: Single Column - 3 Static Cards */}
+        <div className="mobile-column" style={{ maxWidth: 500, margin: '0 auto' }}>
+          {mobileTestimonials.map((testimonial) => (
+            <div
+              key={testimonial.id}
+              className="mobile-testimonial-card"
+              style={{
+                background: '#fff',
+                borderRadius: 16,
+                padding: '24px 24px 20px',
+                boxShadow: '0 4px 20px rgba(0, 0, 0, 0.06)',
+                transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+                cursor: 'default',
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform = 'translateY(-4px)';
+                e.currentTarget.style.boxShadow = '0 8px 30px rgba(0, 0, 0, 0.12)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = 'translateY(0)';
+                e.currentTarget.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.06)';
+              }}
+            >
+              {/* Quote */}
+              <p
+                style={{
+                  fontFamily: 'Inter, sans-serif',
+                  fontSize: '0.9rem',
+                  lineHeight: 1.6,
+                  color: '#334155',
+                  marginBottom: 20,
+                }}
+              >
+                {testimonial.quote}
+              </p>
+
+              {/* Author */}
+              <div
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: 12,
+                }}
+              >
+                {/* Avatar - Initials with gradient background */}
+                <div
+                  className="author-avatar"
+                  style={{
+                    width: 40,
+                    height: 40,
+                    borderRadius: '50%',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    background: 'linear-gradient(135deg, #1565c0, #0097c7)',
+                    color: '#fff',
+                    fontSize: '1rem',
+                    fontWeight: 600,
+                    flexShrink: 0,
+                    fontFamily: 'Poppins, sans-serif',
+                  }}
+                >
+                  {testimonial.name.split(' ').map(n => n[0]).join('').slice(0, 2)}
+                </div>
+
+                {/* Name & Title */}
+                <div>
+                  <p
+                    className="author-name"
+                    style={{
+                      fontFamily: 'Inter, sans-serif',
+                      fontWeight: 600,
+                      fontSize: '0.9rem',
+                      color: '#1e293b',
+                      margin: 0,
+                    }}
+                  >
+                    {testimonial.name}
+                  </p>
+                  <p
+                    className="author-title"
+                    style={{
+                      fontFamily: 'Inter, sans-serif',
+                      fontSize: '0.8rem',
+                      color: '#64748b',
+                      margin: 0,
+                    }}
+                  >
+                    {testimonial.title}
+                  </p>
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </section>

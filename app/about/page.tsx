@@ -39,9 +39,179 @@ export default function AboutPage() {
           </p>
         </div>
       </section>
+
+      <style>{`
+        /* Mobile Styles for About Navigation Section */
+        @media (max-width: 768px) {
+          .about-nav-section {
+            padding: 60px 0 !important;
+          }
+          
+          .about-nav-section .container {
+            padding: 0 16px !important;
+          }
+          
+          .about-nav-section > div > div {
+            grid-template-columns: 1fr !important;
+            gap: 40px !important;
+          }
+          
+          .about-nav-section > div > div > div:first-child {
+            grid-template-columns: 1fr !important;
+            gap: 16px !important;
+          }
+          
+          .about-nav-section > div > div > div:first-child a {
+            padding: 20px !important;
+          }
+          
+          .about-nav-section > div > div > div:first-child a span:first-child {
+            font-size: 1.2rem !important;
+          }
+          
+          .about-nav-section > div > div > div:first-child a h4 {
+            font-size: 0.9rem !important;
+          }
+          
+          .about-nav-section > div > div > div:first-child a p {
+            font-size: 0.8rem !important;
+          }
+          
+          .about-nav-section > div > div > div:first-child a span:last-child {
+            font-size: 0.7rem !important;
+          }
+          
+          .about-nav-section > div > div > div:last-child img {
+            height: 300px !important;
+          }
+        }
+        
+        @media (max-width: 480px) {
+          .about-nav-section {
+            padding: 40px 0 !important;
+          }
+          
+          .about-nav-section > div > div {
+            gap: 32px !important;
+          }
+          
+          .about-nav-section > div > div > div:first-child a {
+            padding: 16px !important;
+          }
+          
+          .about-nav-section > div > div > div:first-child a span:first-child {
+            font-size: 1.1rem !important;
+          }
+          
+          .about-nav-section > div > div > div:first-child a h4 {
+            font-size: 0.85rem !important;
+          }
+          
+          .about-nav-section > div > div > div:first-child a p {
+            font-size: 0.75rem !important;
+          }
+          
+          .about-nav-section > div > div > div:last-child img {
+            height: 250px !important;
+          }
+        }
+        
+        /* Mobile Styles for Who We Are Section */
+        @media (max-width: 768px) {
+          .who-we-are-section {
+            padding: 60px 0 !important;
+          }
+          
+          .who-we-are-section .container {
+            padding: 0 16px !important;
+          }
+          
+          .who-we-are-section > div > div {
+            grid-template-columns: 1fr !important;
+            gap: 40px !important;
+          }
+          
+          .who-we-are-section > div > div > div:first-child h2 {
+            font-size: 1.8rem !important;
+            margin-bottom: 12px !important;
+          }
+          
+          .who-we-are-section > div > div > div:first-child p {
+            font-size: 0.9rem !important;
+            margin-bottom: 16px !important;
+          }
+          
+          .who-we-are-section > div > div > div:first-child > a {
+            padding: 12px 24px !important;
+            font-size: 0.85rem !important;
+          }
+          
+          .who-we-are-section > div > div > div:last-child > div {
+            padding: 16px !important;
+          }
+          
+          .who-we-are-section > div > div > div:last-child > div > div:first-child {
+            width: 36px !important;
+            height: 36px !important;
+          }
+          
+          .who-we-are-section > div > div > div:last-child > div > div:first-child span {
+            font-size: 0.75rem !important;
+          }
+          
+          .who-we-are-section > div > div > div:last-child > div > div:last-child h5 {
+            font-size: 0.85rem !important;
+          }
+          
+          .who-we-are-section > div > div > div:last-child > div > div:last-child p {
+            font-size: 0.8rem !important;
+          }
+        }
+        
+        @media (max-width: 480px) {
+          .who-we-are-section {
+            padding: 40px 0 !important;
+          }
+          
+          .who-we-are-section > div > div {
+            gap: 32px !important;
+          }
+          
+          .who-we-are-section > div > div > div:first-child h2 {
+            font-size: 1.6rem !important;
+          }
+          
+          .who-we-are-section > div > div > div:first-child p {
+            font-size: 0.85rem !important;
+          }
+          
+          .who-we-are-section > div > div > div:last-child > div {
+            padding: 14px !important;
+            gap: 12px !important;
+          }
+          
+          .who-we-are-section > div > div > div:last-child > div > div:first-child {
+            width: 32px !important;
+            height: 32px !important;
+          }
+          
+          .who-we-are-section > div > div > div:last-child > div > div:first-child span {
+            font-size: 0.7rem !important;
+          }
+          
+          .who-we-are-section > div > div > div:last-child > div > div:last-child h5 {
+            font-size: 0.8rem !important;
+          }
+          
+          .who-we-are-section > div > div > div:last-child > div > div:last-child p {
+            font-size: 0.75rem !important;
+          }
+        }
+      `}</style>
+
            {/* <GetToKnowUs/> */}
       {/* Sub-page navigation */}
-      <section style={{ background: '#0a1628', padding: '80px 0' }}>
+      <section style={{ background: '#0a1628', padding: '80px 0' }} className="about-nav-section">
         <div className="container">
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 64, alignItems: 'center' }}>
             {/* Left side - Grid */}
@@ -135,7 +305,7 @@ export default function AboutPage() {
       </section>
 
       {/* Who We Are */}
-      <section style={{ background: '#071020', padding: '100px 0' }}>
+      <section style={{ background: '#071020', padding: '100px 0' }} className="who-we-are-section">
         <div className="container">
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 64, alignItems: 'center' }}>
             <div>

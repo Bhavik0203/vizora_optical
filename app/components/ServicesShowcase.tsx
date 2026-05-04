@@ -6,38 +6,38 @@ const services = [
   { 
     num: '01', 
     title: 'Exceptional Optical Precision', 
-    desc: 'We deliver lenses engineered for superior visual clarity, precision, and all-day comfort — meeting the expectations of today\'s discerning customers.',
-    image: 'https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=800&q=80'
+    desc: 'We deliver lenses engineered for superior visual clarity, precision, and all-day comfort - meeting the expectations of today\'s discerning customers.',
+    image: '/images/mission1.jpg'
   },
   { 
     num: '02', 
     title: 'Advanced Lens Design & Innovation', 
     desc: 'Our portfolio features next-generation lens technologies, including digitally surfaced and high-performance progressive designs.',
-    image: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&q=80'
+    image: '/images/mission2.jpg'
   },
   { 
     num: '03', 
     title: 'Premium Quality with Strategic Value', 
     desc: 'We combine world-class quality standards with optimized pricing, enabling our partners to offer premium products while maintaining strong profitability.',
-    image: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800&q=80'
+    image: '/images/mission3.jpg'
   },
   { 
     num: '04', 
     title: 'Global Expertise, Consistent Excellence', 
     desc: 'Through carefully selected international manufacturing partnerships, we ensure consistent quality, reliability, and adherence to global optical standards.',
-    image: 'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=800&q=80'
+    image: '/images/mission4.jpg'
   },
   { 
     num: '05', 
     title: 'Seamless & Efficient Supply Chain', 
-    desc: 'Our streamlined logistics and fulfillment processes are designed to deliver speed, reliability, and consistency — supporting uninterrupted business operations.',
-    image: 'https://images.unsplash.com/photo-1566576912321-d58ddd7a6088?w=800&q=80'
+    desc: 'Our streamlined logistics and fulfillment processes are designed to deliver speed, reliability, and consistency - supporting uninterrupted business operations.',
+    image: '/images/mission5.jpg'
   },
   { 
     num: '06', 
     title: 'Partnership-Driven Approach', 
-    desc: 'At Vizora Optics, we go beyond supply — we build long-term partnerships through dedicated support, responsiveness, and a shared commitment to growth.',
-    image: 'https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=800&q=80'
+    desc: 'At Vizora Optics, we go beyond supply - we build long-term partnerships through dedicated support, responsiveness, and a shared commitment to growth.',
+    image: '/images/misson6.jpg'
   },
 ]
 

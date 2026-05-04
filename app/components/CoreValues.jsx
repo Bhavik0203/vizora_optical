@@ -1,12 +1,12 @@
 // components/CoreValues.jsx
 
 const values = [
-  { icon: '◈', title: 'Precision', desc: 'Every lens we design and deliver meets the highest standards of optical clarity and accuracy. We do not compromise on quality.', image: "/images/1.png" },
-  { icon: '◉', title: 'Innovation', desc: 'We continuously invest in next-generation lens technologies to stay ahead of the evolving needs of eye care professionals.', image: "/images/2.png" },
-  { icon: '◎', title: 'Reliability', desc: 'Our partners trust us for consistent product quality, dependable logistics, and responsive support — every single time.', image: "/images/3.png" },
-  { icon: '◆', title: 'Partnership', desc: 'We build lasting relationships by prioritizing our partners\' success through competitive pricing, support, and shared growth.', image: "/images/4.png" },
-  { icon: '▣', title: 'Excellence', desc: 'We hold ourselves to global quality benchmarks, working with carefully selected international manufacturing partners.', image: "/images/5.png" },
-  { icon: '◇', title: 'Integrity', desc: 'Transparent communication, honest pricing, and accountability define how we operate with every stakeholder.', image: "/images/image1.jpg" },
+  { icon: '◈', title: 'Precision', desc: 'Every lens we design and deliver meets the highest standards of optical clarity and accuracy. We do not compromise on quality.', image: "/images/Precision.png" },
+  { icon: '◉', title: 'Innovation', desc: 'We continuously invest in next-generation lens technologies to stay ahead of the evolving needs of eye care professionals.', image: "/images/innovation.png" },
+  { icon: '◎', title: 'Reliability', desc: 'Our partners trust us for consistent product quality, dependable logistics, and responsive ', image: "/images/Reliability.png" },
+  { icon: '◆', title: 'Partnership', desc: 'We build lasting relationships by prioritizing our partners success through competitive pricing, support, and shared growth.', image: "/images/Partnership.png" },
+  { icon: '▣', title: 'Excellence', desc: 'We hold ourselves to global quality benchmarks, working with carefully selected international manufacturing partners.', image: "/images/Excellence.png" },
+  { icon: '◇', title: 'Integrity', desc: 'Transparent communication, honest pricing, and accountability define how we operate with every stakeholder.', image: "/images/integrity.png" },
 ];
 
 export default function CoreValues() {

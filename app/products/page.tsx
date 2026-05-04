@@ -1,5 +1,6 @@
 'use client'
 import Link from 'next/link';
+import './products.css';
 
 export default function ProductsPage() {
   return (
@@ -19,41 +20,50 @@ export default function ProductsPage() {
       {/* Product Category Cards */}
       <section className="section bg-white">
         <div className="container">
-          <div className="grid-3" style={{ gap: 24 }}>
+          <div className="product-cards-grid">
             {[
               {
-                icon: '◈', title: 'Optical Lenses', href: '/products/lenses',
-                desc: 'Our full progressive lens series — V SELECT HD, V FLOW HD, V ELITE HD, and V INFINITY 4K — engineered for every segment from value to ultra-premium.',
+                icon: '◈', 
+                title: 'Optical Lenses', 
+                href: '/products/lenses',
+                desc: 'Our full progressive lens series - V SELECT HD, V FLOW HD, V ELITE HD, and V INFINITY 4K - engineered for every segment from value to ultra-premium.',
                 items: ['V SELECT HD', 'V FLOW HD', 'V ELITE HD', 'V INFINITY 4K'],
               },
               {
-                icon: '◉', title: 'Coating Technologies', href: '/products/technology',
+                icon: '◉', 
+                title: 'Coating Technologies', 
+                href: '/products/technology',
                 desc: 'Four advanced coating solutions addressing everyday clarity, durability, digital lifestyle protection, and premium driving performance.',
                 items: ['AR Coating', 'AR PLUS Coating', 'BLUE PLUS Coating', 'VIZORA DRIVE Coating'],
               },
               {
-                icon: '◎', title: 'Compare Products', href: '/products/compare',
+                icon: '◎', 
+                title: 'Compare Products', 
+                href: '/products/compare',
                 desc: 'Side-by-side comparison of all Vizora lens series and coatings to help you recommend the right solution for every customer.',
                 items: ['Lens Comparison', 'Coating Comparison', 'Target Audience Guide'],
               },
-            ].map((cat) => (
-              <Link key={cat.href} href={cat.href} style={{ textDecoration: 'none', display: 'flex', flexDirection: 'column', gap: 0, background: '#fff', border: '1px solid #e8e8e4', transition: 'all 0.25s', overflow: 'hidden', position: 'relative' }}
+            ].map((cat, index) => (
+              <Link 
+                key={cat.href} 
+                href={cat.href} 
+                className="product-category-card"
+                data-number={`0${index + 1}`}
                 id={`products-${cat.title.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z-]/g, '')}`}
-                onMouseEnter={(e) => { (e.currentTarget as HTMLAnchorElement).style.borderColor = 'linear-gradient(135deg, #1565c0, #0097c7)'; (e.currentTarget as HTMLAnchorElement).style.boxShadow = '0 8px 32px rgba(0,0,0,0.12)'; (e.currentTarget as HTMLAnchorElement).style.transform = 'translateY(-4px)'; }}
-                onMouseLeave={(e) => { (e.currentTarget as HTMLAnchorElement).style.borderColor = '#e8e8e4'; (e.currentTarget as HTMLAnchorElement).style.boxShadow = ''; (e.currentTarget as HTMLAnchorElement).style.transform = ''; }}
               >
-                <div style={{ width: '100%', height: 4, background: 'linear-gradient(135deg, #1565c0, #0097c7)' }} />
-                <div style={{ padding: '36px 32px', flex: 1, display: 'flex', flexDirection: 'column', gap: 16 }}>
-                  <div style={{ fontSize: '1.8rem', color: 'linear-gradient(135deg, #1565c0, #0097c7)' }}>{cat.icon}</div>
-                  <h3 style={{ fontFamily: 'Playfair Display, serif', fontSize: '1.4rem', marginBottom: 4 }}>{cat.title}</h3>
-                  <p style={{ fontSize: '0.88rem', color: '#4a5568', lineHeight: 1.75 }}>{cat.desc}</p>
-                  <ul className="feature-list" style={{ marginTop: 8 }}>
-                    {cat.items.map((item, i) => <li key={i}>{item}</li>)}
-                  </ul>
-                  <div style={{ marginTop: 'auto', paddingTop: 20 }}>
-                    <span style={{ fontSize: '0.8rem', fontWeight: 700, color: 'linear-gradient(135deg, #1565c0, #0097c7)', letterSpacing: '0.08em', textTransform: 'uppercase' }}>Explore →</span>
-                  </div>
-                </div>
+                <div className="card-icon">{cat.icon}</div>
+                <h3 className="card-title">{cat.title}</h3>
+                <p className="card-description">{cat.desc}</p>
+                
+                <ul className="features-list">
+                  {cat.items.map((item, i) => (
+                    <li key={i} className="feature-item">
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+                
+                <span className="explore-text">Explore</span>
               </Link>
             ))}
           </div>

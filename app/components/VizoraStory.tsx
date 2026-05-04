@@ -123,7 +123,7 @@ export default function VizoraStory() {
               }}
             >
               Vizora Optics was born from a deep understanding of what optical
-              professionals truly need — premium quality products, dependable
+              professionals truly need - premium quality products, dependable
               service, and a partner who shares their commitment to customer
               satisfaction.
             </p>
@@ -146,7 +146,7 @@ export default function VizoraStory() {
                 lineHeight: 1.9,
               }}
             >
-              Our story is one of careful growth — expanding our product
+              Our story is one of careful growth - expanding our product
               portfolio, deepening manufacturing partnerships, and continuously
               raising the bar on what optical professionals can expect.
             </p>

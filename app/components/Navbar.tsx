@@ -13,7 +13,7 @@ const NAV = [
       { label: 'Mission & Values', href: '/about/mission' },
       { label: 'History', href: '/about/history' },
       { label: 'Innovation & R&D', href: '/about/innovation' },
-      { label: 'Media & Press', href: '/about/media' },
+      // { label: 'Media & Press', href: '/about/media' },
     ],
   },
   {
@@ -92,7 +92,7 @@ export default function Navbar() {
         background: isHero ? 'rgba(10, 22, 40, 0.85)' : 'rgba(10, 22, 40, 0.95)',
         backdropFilter: 'blur(10px)',
         borderRadius: isHero ? '16px' : '0 0 16px 16px',
-        margin: isHero ? '20px 200px' : '0 16px',
+        margin: isHero ? '20px' : '0 16px',
         boxShadow: '0 8px 32px rgba(0, 0, 0, 0.3)',
         border: '1px solid rgba(255, 255, 255, 0.1)',
         transition: 'all 0.3s ease',
@@ -272,41 +272,87 @@ export default function Navbar() {
       {/* Mobile Menu */}
       {menuOpen && (
         <div style={{
-          background: 'rgba(10, 22, 40, 0.95)',
-          backdropFilter: 'blur(10px)',
-          borderRadius: '0 0 16px 16px',
-          margin: '0 16px',
-          padding: '16px 0 24px',
-          border: '1px solid rgba(255, 255, 255, 0.1)',
+          background: 'rgba(10, 22, 40, 0.98)',
+          backdropFilter: 'blur(20px)',
+          borderRadius: isHero ? '0 0 16px 16px' : '0',
+          margin: isHero ? '0 20px' : '0',
+          padding: '20px 0 32px',
+          border: isHero ? '1px solid rgba(255, 255, 255, 0.1)' : 'none',
           borderTop: 'none',
+          maxHeight: 'calc(100vh - 112px)',
+          overflowY: 'auto',
         }}>
           {NAV.map((item) => (
             <div key={item.label}>
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '14px 24px', borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
+              <div style={{ 
+                display: 'flex', 
+                alignItems: 'center', 
+                justifyContent: 'space-between', 
+                padding: '16px 24px', 
+                borderBottom: '1px solid rgba(255,255,255,0.08)',
+                transition: 'background 0.2s ease'
+              }}>
                 <Link
                   href={item.href}
-                  style={{ fontSize: '0.95rem', fontWeight: 500, color: 'rgba(255,255,255,0.8)', textDecoration: 'none' }}
+                  style={{ 
+                    fontSize: '1rem', 
+                    fontWeight: 500, 
+                    color: pathname === item.href ? '#fff' : 'rgba(255,255,255,0.9)', 
+                    textDecoration: 'none',
+                    flex: 1
+                  }}
                 >
                   {item.label}
                 </Link>
                 {item.children && (
                   <button
                     onClick={() => setMobileOpen(mobileOpen === item.label ? null : item.label)}
-                    style={{ background: 'none', border: 'none', color: 'rgba(255,255,255,0.6)', cursor: 'pointer', padding: 4 }}
+                    style={{ 
+                      background: 'none', 
+                      border: 'none', 
+                      color: mobileOpen === item.label ? '#fff' : 'rgba(255,255,255,0.6)', 
+                      cursor: 'pointer', 
+                      padding: 6,
+                      borderRadius: '6px',
+                      transition: 'all 0.2s ease'
+                    }}
                   >
-                    <svg width="12" height="8" viewBox="0 0 12 8" fill="none">
-                      <path d={mobileOpen === item.label ? 'M1 7l5-5 5 5' : 'M1 1l5 5 5-5'} stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/>
+                    <svg width="14" height="10" viewBox="0 0 14 10" fill="none">
+                      <path d={mobileOpen === item.label ? 'M1 9l6-6 6 6' : 'M1 1l6 6 6-6'} stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
                     </svg>
                   </button>
                 )}
               </div>
               {item.children && mobileOpen === item.label && (
-                <div style={{ background: 'rgba(0, 0, 0, 0.2)', paddingLeft: 16 }}>
+                <div style={{ 
+                  background: 'rgba(0, 0, 0, 0.3)', 
+                  paddingLeft: 24,
+                  borderLeft: '3px solid rgba(21, 101, 192, 0.5)',
+                  animation: 'slideDown 0.3s ease'
+                }}>
                   {item.children.map((child) => (
                     <Link
                       key={child.label}
                       href={child.href}
-                      style={{ display: 'block', padding: '10px 24px', fontSize: '0.85rem', color: 'rgba(255,255,255,0.6)', borderBottom: '1px solid rgba(255,255,255,0.03)', textDecoration: 'none' }}
+                      style={{ 
+                        display: 'block', 
+                        padding: '14px 24px', 
+                        fontSize: '0.9rem', 
+                        color: pathname === child.href ? '#fff' : 'rgba(255,255,255,0.7)', 
+                        borderBottom: '1px solid rgba(255,255,255,0.05)', 
+                        textDecoration: 'none',
+                        transition: 'all 0.2s ease'
+                      }}
+                      onMouseEnter={(e) => {
+                        (e.currentTarget as HTMLAnchorElement).style.background = 'rgba(21, 101, 192, 0.2)';
+                        (e.currentTarget as HTMLAnchorElement).style.color = '#fff';
+                        (e.currentTarget as HTMLAnchorElement).style.paddingLeft = '28px';
+                      }}
+                      onMouseLeave={(e) => {
+                        (e.currentTarget as HTMLAnchorElement).style.background = 'transparent';
+                        (e.currentTarget as HTMLAnchorElement).style.color = pathname === child.href ? '#fff' : 'rgba(255,255,255,0.7)';
+                        (e.currentTarget as HTMLAnchorElement).style.paddingLeft = '24px';
+                      }}
                     >
                       {child.label}
                     </Link>
@@ -315,36 +361,142 @@ export default function Navbar() {
               )}
             </div>
           ))}
-          <div style={{ padding: '20px 24px 0' }}>
-            <Link href="/"  style={{ 
-              display: 'flex', 
-              width: '100%', 
-              justifyContent: 'center', 
-              alignItems: 'center',
-              padding: '12px 24px',
-              background: 'linear-gradient(135deg, #1565c0, #0097c7)',
-              color: '#fff',
-              fontSize: '0.78rem',
-              fontWeight: 700,
-              letterSpacing: '0.12em',
-              textTransform: 'uppercase',
-              textDecoration: 'none',
-              borderRadius: '4px'
-            }} id="mobile-nav-cta">
-              Get in Touch
-            </Link>
+          <div style={{ padding: '24px 24px 0' }}>
+            <a
+              href="https://www.solenzara.co.uk/vizorastart.html"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ 
+                display: 'flex', 
+                width: '100%', 
+                justifyContent: 'center', 
+                alignItems: 'center',
+                gap: 8,
+                padding: '14px 24px',
+                background: 'linear-gradient(135deg, #1565c0, #0097c7)',
+                color: '#fff',
+                fontSize: '0.85rem',
+                fontWeight: 700,
+                letterSpacing: '0.06em',
+                textTransform: 'uppercase',
+                textDecoration: 'none',
+                borderRadius: '8px',
+                transition: 'all 0.3s ease'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform = 'translateY(-2px)';
+                e.currentTarget.style.boxShadow = '0 8px 24px rgba(21, 101, 192, 0.4)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = 'translateY(0)';
+                e.currentTarget.style.boxShadow = 'none';
+              }}
+            >
+              Order Online
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                <path d="M2 6h8M6 2l4 4-4 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round"/>
+              </svg>
+            </a>
           </div>
         </div>
       )}
 
       <style>{`
-        @media (max-width: 960px) {
-          .desktop-nav { display: none !important; }
-          .mobile-menu-btn { display: flex !important; }
-          header > div:nth-child(2) > a.btn { display: none !important; }
-          .desktop-cta { display: none !important; }
-          .desktop-order-btn { display: none !important; }
+        @keyframes slideDown {
+          from {
+            opacity: 0;
+            transform: translateY(-10px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
         }
+        
+        @keyframes fadeInUp {
+          from {
+            opacity: 0;
+            transform: translateY(20px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+        
+        /* Tablet */
+        @media (max-width: 1024px) {
+          header {
+            margin: isHero ? '16px 24px' : '0 24px' !important;
+            border-radius: isHero ? '12px' : '0 0 12px 12px' !important;
+          }
+        }
+        
+        /* Mobile */
+        @media (max-width: 768px) {
+          header {
+            margin: isHero ? '12px' : '0' !important;
+            border-radius: isHero ? '8px' : '0' !important;
+          }
+          
+          .container.flex-between {
+            padding: 0 16px !important;
+          }
+          
+          .desktop-nav { 
+            display: none !important; 
+          }
+          
+          .mobile-menu-btn { 
+            display: flex !important; 
+            align-items: center;
+            justify-content: center;
+          }
+          
+          /* Logo adjustments for mobile */
+          .container.flex-between img {
+            height: 60px !important;
+            width: auto !important;
+          }
+        }
+        
+        /* Small mobile */
+        @media (max-width: 480px) {
+          header {
+            margin: isHero ? '8px' : '0' !important;
+            border-radius: isHero ? '8px' : '0' !important;
+          }
+          
+          .container.flex-between {
+            height: 60px !important;
+            padding: 0 12px !important;
+          }
+          
+          .container.flex-between img {
+            height: 50px !important;
+            width: auto !important;
+          }
+          
+          /* Mobile menu adjustments */
+          header > div:last-child {
+            margin: isHero ? '0 8px' : '0' !important;
+            padding: 16px 0 24px !important;
+          }
+          
+          header > div:last-child > div > div {
+            padding: 14px 16px !important;
+          }
+          
+          header > div:last-child > div > div > div {
+            padding-left: 16px !important;
+          }
+          
+          header > div:last-child > div > div > div a {
+            padding: 12px 16px !important;
+            font-size: 0.85rem !important;
+          }
+        }
+        
         @media (min-width: 961px) {
           .desktop-order-btn { display: flex !important; }
         }

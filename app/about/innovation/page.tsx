@@ -1,9 +1,99 @@
 'use client'
 import Link from 'next/link';
 import Technologies from '../../components/technologies';
+
+// Mobile responsive styles for development process
+const ProcessStyles = () => (
+  <style>{`
+    /* Mobile Styles for Development Process Section */
+    @media (max-width: 768px) {
+      .process-section {
+        padding: 40px 0 !important;
+      }
+      
+      .process-section .container {
+        padding: 0 16px !important;
+      }
+      
+      .process-section .container > div:first-child {
+        margin-bottom: 32px !important;
+      }
+      
+      /* Change to vertical layout on mobile */
+      .process-section .process-grid {
+        grid-template-columns: 1fr !important;
+        gap: 0 !important;
+      }
+      
+      .process-section .process-item {
+        padding: 24px 20px !important;
+        text-align: left !important;
+      }
+      
+      .process-section .process-item > div:first-child {
+        font-size: 1.5rem !important;
+        margin-bottom: 8px !important;
+      }
+      
+      .process-section .process-item h5 {
+        font-size: 1rem !important;
+        margin-bottom: 8px !important;
+      }
+      
+      .process-section .process-item p {
+        font-size: 0.8rem !important;
+        line-height: 1.6 !important;
+      }
+      
+      /* Hide arrows on mobile */
+      .process-section .process-arrow {
+        display: none !important;
+      }
+      
+      /* Add vertical connecting line */
+      .process-section .process-item::after {
+        content: '' !important;
+        position: absolute !important;
+        left: 20px !important;
+        bottom: -1px !important;
+        width: 2px !important;
+        height: 20px !important;
+        background: 'linear-gradient(135deg, #1565c0, #0097c7)' !important;
+      }
+      
+      .process-section .process-item:last-child::after {
+        display: none !important;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .process-section {
+        padding: 32px 0 !important;
+      }
+      
+      .process-section .process-item {
+        padding: 20px 16px !important;
+      }
+      
+      .process-section .process-item > div:first-child {
+        font-size: 1.3rem !important;
+      }
+      
+      .process-section .process-item h5 {
+        font-size: 0.9rem !important;
+      }
+      
+      .process-section .process-item p {
+        font-size: 0.75rem !important;
+      }
+    }
+  `}</style>
+);
+
 export default function InnovationPage() {
   return (
     <>
+      <ProcessStyles />
       <section className="page-hero">
         <div className="container">
           <nav className="breadcrumb">
@@ -26,13 +116,13 @@ export default function InnovationPage() {
               <h2 style={{ marginBottom: 16 }}>Engineering the Future of Vision</h2>
               <div className="divider" />
               <p style={{ marginBottom: 20 }}>
-                At Vizora Optics, innovation is not an afterthought — it is embedded in every step of our
+                At Vizora Optics, innovation is not an afterthought - it is embedded in every step of our
                 product development process. From conceptualization to final delivery, we leverage the latest
                 advancements in digital surfacing, optical design, and coating technology.
               </p>
               <p style={{ marginBottom: 20 }}>
                 Our R&D efforts are focused on identifying the real-world challenges faced by lens wearers and
-                designing solutions that address them directly — whether it is reducing digital eye strain,
+                designing solutions that address them directly - whether it is reducing digital eye strain,
                 improving night driving visibility, or maximizing progressive lens adaptation.
               </p>
               <p>
@@ -45,7 +135,7 @@ export default function InnovationPage() {
                 { icon: '◈', title: 'Digital Surfacing Technology', desc: 'All Vizora progressive lenses are manufactured using advanced digital surfacing processes that deliver mathematically precise lens geometries for superior optical performance.' },
                 { icon: '◉', title: 'High-Energy HEV Filtration', desc: 'Our BLUE PLUS coating uses selective wavelength filtration to reduce exposure to harmful high-energy visible blue light without compromising colour perception.' },
                 { icon: '◎', title: 'Night Driving Optimization', desc: 'VIZORA DRIVE coating incorporates specialized anti-reflective layers engineered specifically for low-light and high-glare driving conditions.' },
-                { icon: '◆', title: '4K Visual Clarity', desc: 'V INFINITY 4K represents our most advanced progressive design — engineered for ultra-high-definition clarity with a precision-personalized approach.' },
+                { icon: '◆', title: '4K Visual Clarity', desc: 'V INFINITY 4K represents our most advanced progressive design - engineered for ultra-high-definition clarity with a precision-personalized approach.' },
               ].map((item, i) => (
                 <div key={i} style={{ display: 'flex', gap: 20, padding: '20px 24px', border: '1px solid #e8e8e4', background: '#f5f5f0' }}>
                   <span style={{ fontSize: '1.4rem', color: 'linear-gradient(135deg, #1565c0, #0097c7)', marginTop: 2 }}>{item.icon}</span>
@@ -61,14 +151,14 @@ export default function InnovationPage() {
       </section>
 
       {/* Process */}
-      <section className="section bg-off-white">
+      <section className="section bg-off-white process-section">
         <div className="container">
           <div className="text-center" style={{ marginBottom: 56 }}>
             <span className="section-label">Development Process</span>
             <h2>How We Build Better Lenses</h2>
             <div className="divider divider-center" />
           </div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: 2, position: 'relative' }}>
+          <div className="process-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: 2, position: 'relative' }}>
             {[
               { step: '01', title: 'Research', desc: 'Identify real user needs and emerging optical science trends.' },
               { step: '02', title: 'Design', desc: 'Develop lens geometries and coating formulas using advanced simulation.' },
@@ -76,11 +166,11 @@ export default function InnovationPage() {
               { step: '04', title: 'Validate', desc: 'Clinical and field validation with eye care professionals.' },
               { step: '05', title: 'Deliver', desc: 'Refined product released through our quality-controlled supply chain.' },
             ].map((s, i) => (
-              <div key={i} style={{ background: i % 2 === 0 ? '#0a1628' : '#12233f', padding: '36px 24px', textAlign: 'center', position: 'relative' }}>
+              <div key={i} className="process-item" style={{ background: i % 2 === 0 ? '#0a1628' : '#12233f', padding: '36px 24px', textAlign: 'center', position: 'relative' }}>
                 {i < 4 && (
-                  <div style={{ position: 'absolute', right: -1, top: '50%', transform: 'translateY(-50%)', width: 12, height: 12, border: '2px solid linear-gradient(135deg, #1565c0, #0097c7)', borderLeft: 'none', borderBottom: 'none', rotate: '45deg', zIndex: 2, background: i % 2 === 0 ? '#0a1628' : '#12233f' }} />
+                  <div className="process-arrow" style={{ position: 'absolute', right: -1, top: '50%', transform: 'translateY(-50%)', width: 12, height: 12, border: '2px solid linear-gradient(135deg, #1565c0, #0097c7)', borderLeft: 'none', borderBottom: 'none', rotate: '45deg', zIndex: 2, background: i % 2 === 0 ? '#d0d7e0' : '#12233f' }} />
                 )}
-                <div style={{ fontFamily: 'Playfair Display, serif', fontSize: '2rem', fontWeight: 700, color: 'linear-gradient(135deg, #1565c0, #0097c7)', lineHeight: 1, marginBottom: 12 }}>{s.step}</div>
+                <div style={{ fontFamily: 'Playfair Display, serif', fontSize: '2rem', fontWeight: 700, color: '#fff', lineHeight: 1, marginBottom: 12 }}>{s.step}</div>
                 <h5 style={{ color: '#fff', fontFamily: 'Inter, sans-serif', fontWeight: 700, marginBottom: 10 }}>{s.title}</h5>
                 <p style={{ fontSize: '0.8rem', color: 'rgba(255,255,255,0.5)', lineHeight: 1.65 }}>{s.desc}</p>
               </div>
@@ -89,33 +179,7 @@ export default function InnovationPage() {
         </div>
       </section>
 
-      {/* Technologies */}
-      <section className="section bg-white">
-        <div className="container">
-          <div className="text-center" style={{ marginBottom: 56 }}>
-            <span className="section-label">Key Technologies</span>
-            <h2>Innovations in Our Portfolio</h2>
-            <div className="divider divider-center" />
-          </div>
-          <div className="grid-3" style={{ gap: 24 }}>
-            {[
-              { title: 'Digital Progressive Design', desc: 'All progressive lenses in the Vizora range use digitally surfaced designs to ensure maximum zone width, minimal swim effect, and fast adaptation.', link: '/products/lenses' },
-              { title: 'Multi-Layer AR Technology', desc: 'Our AR and AR PLUS coatings feature advanced multi-layer anti-reflective stacks that dramatically reduce surface reflections and increase light transmission.', link: '/products/technology' },
-              { title: 'Selective Blue Light Filtration', desc: 'BLUE PLUS uses precisely calibrated wavelength filtration to block harmful HEV blue light while preserving natural colour balance.', link: '/products/technology' },
-              { title: 'Hydrophobic & Oleophobic Layers', desc: 'AR PLUS coating incorporates hydrophobic and oleophobic top layers for superior water, dust, and smudge resistance and extended lens lifespan.', link: '/products/technology' },
-              { title: 'Low-Light Contrast Enhancement', desc: 'VIZORA DRIVE is engineered with special contrast-enhancing properties that improve clarity and sharpness in low-light driving conditions.', link: '/products/technology' },
-              { title: 'Precision Personalization', desc: 'Our flagship V INFINITY 4K lens supports personalized parameters for a truly custom visual experience tailored to each wearer.', link: '/products/lenses' },
-            ].map((item, i) => (
-              <div key={i} className="card" style={{ position: 'relative', paddingTop: 40 }}>
-                <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 3, background: 'linear-gradient(135deg, #1565c0, #0097c7)' }} />
-                <h4 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 700, marginBottom: 12, fontSize: '0.95rem' }}>{item.title}</h4>
-                <p style={{ fontSize: '0.85rem', color: '#4a5568', lineHeight: 1.75, marginBottom: 16 }}>{item.desc}</p>
-                <Link href={item.link} style={{ fontSize: '0.78rem', fontWeight: 700, color: 'linear-gradient(135deg, #1565c0, #0097c7)', textDecoration: 'none', letterSpacing: '0.06em', textTransform: 'uppercase' }}>Learn More →</Link>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+    
             <Technologies />
       <section className="section-sm" style={{ background: '#0a1628' }}>
         <div className="container text-center">

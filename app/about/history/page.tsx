@@ -5,12 +5,128 @@ import { useEffect } from 'react';
 
 const milestones = [
   { year: 'Foundation', title: 'Vizora Optics Established', desc: 'Founded with a clear vision: to bridge the gap between premium optical quality and accessible pricing for eye care professionals across the United States.' },
-  { year: 'Growth', title: 'Building Our Product Portfolio', desc: 'Developed and launched the core V-Series progressive lens lineup — V SELECT HD, V FLOW HD, and V ELITE HD — all built on digitally surfaced technology.' },
-  { year: 'Innovation', title: 'Launching Advanced Coatings', desc: 'Introduced our specialized coating range: AR, AR PLUS, BLUE PLUS, and VIZORA DRIVE — addressing the full spectrum of modern lifestyle needs.' },
+  { year: 'Growth', title: 'Building Our Product Portfolio', desc: 'Developed and launched the core V-Series progressive lens lineup - V SELECT HD, V FLOW HD, and V ELITE HD - all built on digitally surfaced technology.' },
+  { year: 'Innovation', title: 'Launching Advanced Coatings', desc: 'Introduced our specialized coating range: AR, AR PLUS, BLUE PLUS, and VIZORA DRIVE - addressing the full spectrum of modern lifestyle needs.' },
   { year: 'Expansion', title: 'V INFINITY 4K Unveiled', desc: 'Launched our flagship ultra-premium progressive lens delivering 4K-class visual clarity and maximum field of vision with minimal swim effect.' },
-  { year: 'Partnership', title: 'Growing Our Network', desc: 'Expanded our partner network across PA, NJ, and beyond — empowering optical retailers and distributors with premium products and exceptional service.' },
-  { year: 'Today', title: 'Setting the Standard', desc: 'Vizora Optics continues to evolve — investing in R&D, strengthening our supply chain, and deepening our commitment to partner success.' },
+  { year: 'Partnership', title: 'Growing Our Network', desc: 'Expanded our partner network across PA, NJ, and beyond - empowering optical retailers and distributors with premium products and exceptional service.' },
+  { year: 'Today', title: 'Setting the Standard', desc: 'Vizora Optics continues to evolve - investing in R&D, strengthening our supply chain, and deepening our commitment to partner success.' },
 ];
+
+// Mobile responsive styles for timeline
+const TimelineStyles = () => (
+  <style>{`
+    /* Mobile Styles for Timeline Section */
+    @media (max-width: 768px) {
+      .timeline-section {
+        padding: 40px 0 !important;
+      }
+      
+      .timeline-section .container {
+        padding: 0 16px !important;
+      }
+      
+      .timeline-section .container > div:first-child {
+        margin-bottom: 32px !important;
+      }
+      
+      .timeline-section .container > div:last-child {
+        max-width: none !important;
+      }
+      
+      /* Hide vertical line on mobile */
+      .timeline-section .container > div:last-child > div:first-child {
+        display: none !important;
+      }
+      
+      /* Stack timeline items vertically */
+      .timeline-section .timeline-item {
+        flex-direction: column !important;
+        gap: 16px !important;
+        margin-bottom: 24px !important;
+        padding-left: 20px !important;
+        position: relative !important;
+      }
+      
+      /* Add small vertical line for mobile */
+      .timeline-section .timeline-item::before {
+        content: '' !important;
+        position: absolute !important;
+        left: 0 !important;
+        top: 20px !important;
+        bottom: -20px !important;
+        width: 2px !important;
+        background: '#e8e8e4' !important;
+      }
+      
+      .timeline-section .timeline-item:last-child::before {
+        display: none !important;
+      }
+      
+      /* Adjust content padding */
+      .timeline-section .timeline-item > div:first-child {
+        padding: 0 !important;
+      }
+      
+      .timeline-section .timeline-card {
+        padding: 20px !important;
+      }
+      
+      .timeline-section .timeline-card > div:first-child {
+        font-size: 0.65rem !important;
+        margin-bottom: 6px !important;
+      }
+      
+      .timeline-section .timeline-card h4 {
+        font-size: 0.9rem !important;
+        margin-bottom: 8px !important;
+      }
+      
+      .timeline-section .timeline-card p {
+        font-size: 0.8rem !important;
+        line-height: 1.6 !important;
+      }
+      
+      /* Adjust dot position for mobile */
+      .timeline-section .timeline-dot {
+        position: absolute !important;
+        left: 0 !important;
+        top: 20px !important;
+        transform: translateX(-50%) !important;
+        width: 12px !important;
+        height: 12px !important;
+        border: '2px solid #f5f5f0' !important;
+      }
+      
+      /* Hide empty flex div */
+      .timeline-section .timeline-item > div:last-child {
+        display: none !important;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .timeline-section {
+        padding: 32px 0 !important;
+      }
+      
+      .timeline-section .timeline-card {
+        padding: 16px !important;
+      }
+      
+      .timeline-section .timeline-card h4 {
+        font-size: 0.85rem !important;
+      }
+      
+      .timeline-section .timeline-card p {
+        font-size: 0.75rem !important;
+      }
+      
+      .timeline-section .timeline-dot {
+        width: 10px !important;
+        height: 10px !important;
+      }
+    }
+  `}</style>
+);
 
 export default function HistoryPage() {
   useEffect(() => {
@@ -60,6 +176,8 @@ export default function HistoryPage() {
 
   return (
     <>
+      <TimelineStyles />
+      {/* Hero Section */}
       <section className="page-hero">
         <div className="container">
           <nav className="breadcrumb">
@@ -126,7 +244,7 @@ export default function HistoryPage() {
       </section>
 
       {/* Timeline */}
-      <section className="section bg-off-white">
+      <section className="section bg-off-white timeline-section">
         <div className="container">
           <div className="text-center" style={{ marginBottom: 56 }}>
             <span className="section-label">Timeline</span>
@@ -137,7 +255,7 @@ export default function HistoryPage() {
             {/* Vertical line */}
             <div style={{ position: 'absolute', left: '50%', top: 0, bottom: 0, width: 2, background: '#e8e8e4', transform: 'translateX(-50%)' }} />
             {milestones.map((m, i) => (
-              <div key={i} style={{
+              <div key={i} className="timeline-item" style={{
                 display: 'flex',
                 flexDirection: i % 2 === 0 ? 'row' : 'row-reverse',
                 gap: 48, marginBottom: 48, position: 'relative', alignItems: 'flex-start',
@@ -172,7 +290,7 @@ export default function HistoryPage() {
                   </div>
                 </div>
                 {/* Dot */}
-                <div style={{
+                <div className="timeline-dot" style={{
                   position: 'absolute', left: '50%', top: 20,
                   width: 16, height: 16, background: 'linear-gradient(135deg, #1565c0, #0097c7)',
                   transform: 'translateX(-50%)',

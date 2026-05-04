@@ -7,37 +7,37 @@ const services = [
     num: '01', 
     title: 'Digital Progressive Design', 
     desc: 'All progressive lenses in the Vizora range use digitally surfaced designs to ensure maximum zone width, minimal swim effect, and fast adaptation.',
-    image: 'https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=800&q=80'
+    image: '/images/mission1.jpg'
   },
   { 
     num: '02', 
     title: 'Multi-Layer AR Technology', 
     desc: 'Our AR and AR PLUS coatings feature advanced multi-layer anti-reflective stacks that dramatically reduce surface reflections and increase light transmission.',
-    image: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&q=80'
+    image: '/images/mission2.jpg'
   },
   { 
     num: '03', 
     title: 'Selective Blue Light Filtration', 
     desc: 'BLUE PLUS uses precisely calibrated wavelength filtration to block harmful HEV blue light while preserving natural colour balance.',
-    image: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800&q=80'
+    image: '/images/mission3.jpg'
   },
   { 
     num: '04', 
     title: 'Hydrophobic & Oleophobic Layers', 
     desc: 'AR PLUS coating incorporates hydrophobic and oleophobic top layers for superior water, dust, and smudge resistance and extended lens lifespan.',
-    image: 'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=800&q=80'
+    image: '/images/mission4.jpg'
   },
   { 
     num: '05', 
     title: 'Low-Light Contrast Enhancement', 
     desc: 'VIZORA DRIVE is engineered with special contrast-enhancing properties that improve clarity and sharpness in low-light driving conditions.',
-    image: 'https://images.unsplash.com/photo-1566576912321-d58ddd7a6088?w=800&q=80'
+    image: '/images/mission5.jpg'
   },
   { 
     num: '06', 
     title: 'Precision Personalization', 
     desc: 'Our flagship V INFINITY 4K lens supports personalized parameters for a truly custom visual experience tailored to each wearer.',
-    image: 'https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=800&q=80'
+    image: '/images/misson6.jpg'
   },
 ]
 

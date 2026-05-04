@@ -70,7 +70,7 @@ export default function ProfessionalsPage() {
               <div className="divider" />
               <p style={{ marginBottom: 20 }}>
                 At Vizora Optics, we understand the demands placed on optical professionals every day.
-                That is why our work goes beyond manufacturing — we provide comprehensive support
+                That is why our work goes beyond manufacturing - we provide comprehensive support
                 to help you grow your practice and serve your patients better.
               </p>
               <p>
