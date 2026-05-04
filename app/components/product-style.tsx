@@ -129,9 +129,7 @@ const ProductStyle = ({ onApplyNowClick: _onApplyNowClick }: ProductStyleProps) 
   return (
     <section className={styles.section}>
       <div style={{ textAlign: 'center', marginBottom: '16px' }}>
-        <div className="section-label" style={{ justifyContent: 'center' }}>
-          <Eye size={14} /> Progressive Lens Series
-        </div>
+      
         <h2 style={{ fontSize: 'clamp(2rem, 4vw, 2.8rem)', fontWeight: '800', marginBottom: '6px', letterSpacing: '-0.02em' }}>
           Four Premium <span className="text-blue-800-solid">Optical Solutions</span>
         </h2>
@@ -235,21 +233,10 @@ const ProductStyle = ({ onApplyNowClick: _onApplyNowClick }: ProductStyleProps) 
                     </div>
                   </div>
 
-                  {/* Ideal For Section */}
-                  <div className={styles.idealSection}>
-                    <div className={styles.idealLabel}>Ideal For</div>
-                    <p className={styles.idealText}>{lens.ideal}</p>
-                  </div>
+                 
 
                   {/* Footer */}
-                  <div className={styles.cardFooter}>
-                    {/* <span className={styles.countText} style={{ color: '#ffffff' }}>
-                      Premium Optical Solution
-                    </span> */}
-                    <Link href={lens.href} className={styles.exploreLink} style={{ color: '#ffffff', borderColor: 'rgba(255,255,255,0.25)' }}>
-                      Explore <ArrowRight size={14} />
-                    </Link>
-                  </div>
+                
                 </div>
               </div>
             </div>

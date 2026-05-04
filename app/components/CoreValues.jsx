@@ -6,12 +6,12 @@ const values = [
   { icon: '◎', title: 'Reliability', desc: 'Our partners trust us for consistent product quality, dependable logistics, and responsive ', image: "/images/Reliability.png" },
   { icon: '◆', title: 'Partnership', desc: 'We build lasting relationships by prioritizing our partners success through competitive pricing, support, and shared growth.', image: "/images/Partnership.png" },
   { icon: '▣', title: 'Excellence', desc: 'We hold ourselves to global quality benchmarks, working with carefully selected international manufacturing partners.', image: "/images/Excellence.png" },
-  { icon: '◇', title: 'Integrity', desc: 'Transparent communication, honest pricing, and accountability define how we operate with every stakeholder.', image: "/images/integrity.png" },
+  { icon: '◇', title: 'Integrity', desc: 'Transparent communication, honest pricing, and accountability define how we operate with every stakeholder.', image: "/images/Integrity.png" },
 ];
 
 export default function CoreValues() {
   return (
-    <section style={{ padding: "4rem 2rem", fontFamily: "Inter, sans-serif" }}>
+    <section  className="" style={{ padding: "4rem 2rem", fontFamily: "Inter, sans-serif" }}>
       {/* Header */}
       <div style={{ textAlign: "center", marginBottom: "3.5rem" }}>
         <span

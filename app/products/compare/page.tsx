@@ -20,7 +20,7 @@ export default function ComparePage() {
       {/* Lens Comparison */}
       <section className="section bg-white">
         <div className="container">
-          <div style={{ marginBottom: 40 }}>
+          <div style={{ marginBottom: 20 }}>
             <span className="section-label">Progressive Series</span>
             <h2>Lens Comparison</h2>
             <div className="divider" />

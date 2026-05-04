@@ -27,8 +27,14 @@ export default function Footer() {
           <div className="footer-col">
             <h5 className="footer-heading">Company</h5>
             <ul className="footer-list">
-              {['About Us','Mission & Values','Our History','Innovation & R&D','Media & Press'].map((label) => (
-                <li key={label}><Link href="/" className="footer-link">{label}</Link></li>
+              {[
+                { label: 'About Us', href: '/about' },
+                { label: 'Mission & Values', href: '/about/mission' },
+                { label: 'Our History', href: '/about/history' },
+                { label: 'Innovation & R&D', href: '/about/innovation' },
+                { label: 'Media & Press', href: '/about/media' }
+              ].map((item) => (
+                <li key={item.label}><Link href={item.href} className="footer-link">{item.label}</Link></li>
               ))}
             </ul>
           </div>
@@ -37,8 +43,14 @@ export default function Footer() {
           <div className="footer-col">
             <h5 className="footer-heading">Products</h5>
             <ul className="footer-list">
-              {['Optical Lenses','Technology','Compare Products','Professionals','Training'].map((label) => (
-                <li key={label}><Link href="/" className="footer-link">{label}</Link></li>
+              {[
+                { label: 'Optical Lenses', href: '/products/lenses' },
+                { label: 'Technology', href: '/products/technology' },
+                { label: 'Compare Products', href: '/products/compare' },
+                { label: 'Professionals', href: '/professionals' },
+                { label: 'Training', href: '/professionals/training' }
+              ].map((item) => (
+                <li key={item.label}><Link href={item.href} className="footer-link">{item.label}</Link></li>
               ))}
             </ul>
           </div>
@@ -62,6 +74,7 @@ export default function Footer() {
             </div>
           </div>
         </div>
+        
       </div>
 
       {/* Bottom bar */}
@@ -172,7 +185,7 @@ export default function Footer() {
           user-select: none;
         }
         .footer-bottom-content {
-          max-width: 1200px;
+          max-width: 1400px;
           margin: 0 auto;
           padding: 0 24px;
           position: relative;

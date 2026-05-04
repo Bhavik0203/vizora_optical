@@ -246,7 +246,7 @@ export default function HistoryPage() {
       {/* Timeline */}
       <section className="section bg-off-white timeline-section">
         <div className="container">
-          <div className="text-center" style={{ marginBottom: 56 }}>
+          <div className="text-center" style={{ marginBottom: 26 }}>
             <span className="section-label">Timeline</span>
             <h2>Key Milestones</h2>
             <div className="divider divider-center" />

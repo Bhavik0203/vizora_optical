@@ -6,7 +6,7 @@ const subPages = [
   { title: 'Mission & Values', href: '/about/mission', icon: '◈', desc: 'Our guiding principles and core values that drive everything we do.' },
   { title: 'Our History', href: '/about/history', icon: '◉', desc: 'The journey that shaped Vizora Optics into a trusted optical solutions provider.' },
   { title: 'Innovation & R&D', href: '/about/innovation', icon: '◎', desc: 'Our commitment to advancing lens technology and optical science.' },
-  { title: 'Media & Press', href: '/about/media', icon: '◆', desc: 'Latest news, press releases, and media resources for journalists.' },
+  // { title: 'Media & Press', href: '/about/media', icon: '◆', desc: 'Latest news, press releases, and media resources for journalists.' },
 ];
 
 export default function AboutPage() {
@@ -211,18 +211,18 @@ export default function AboutPage() {
 
            {/* <GetToKnowUs/> */}
       {/* Sub-page navigation */}
-      <section style={{ background: '#0a1628', padding: '80px 0' }} className="about-nav-section">
+      <section style={{ background: '#0a1628', padding: '50px 0' }} className="about-nav-section">
         <div className="container">
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 64, alignItems: 'center' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24, alignItems: 'center' }}>
             {/* Left side - Grid */}
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 24 }}>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: 10 }}>
               {subPages.map((p) => (
                 <Link key={p.href} href={p.href} 
                   style={{ 
                     textDecoration: 'none', 
                     display: 'flex', 
                     flexDirection: 'column', 
-                    gap: 12, 
+                    gap: 22, 
                     padding: '28px 24px', 
                     background: 'rgba(10, 22, 40, 0.6)',
                     backdropFilter: 'blur(10px)',
@@ -243,7 +243,7 @@ export default function AboutPage() {
                     (e.currentTarget as HTMLAnchorElement).style.transform = 'translateY(0)';
                   }}
                 >
-                  <span style={{ fontSize: '1.5rem', color: '#fff' }}>{p.icon}</span>
+                  {/* <span style={{ fontSize: '1.5rem', color: '#fff' }}>{p.icon}</span> */}
                   <h4 style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.95rem', fontWeight: 700, color: '#fff' }}>{p.title}</h4>
                   <p style={{ fontSize: '0.82rem', color: 'rgba(255,255,255,0.6)', lineHeight: 1.6 }}>{p.desc}</p>
                   <span style={{ fontSize: '0.75rem', fontWeight: 700, color: '#fff', letterSpacing: '0.08em', textTransform: 'uppercase' }}>Read More →</span>
@@ -305,7 +305,7 @@ export default function AboutPage() {
       </section>
 
       {/* Who We Are */}
-      <section style={{ background: '#071020', padding: '100px 0' }} className="who-we-are-section">
+      <section style={{ background: '#071020', padding: '50px 0' }} className="who-we-are-section">
         <div className="container">
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 64, alignItems: 'center' }}>
             <div>
@@ -393,7 +393,7 @@ export default function AboutPage() {
       </section>
 
       {/* CTA */}
-      <section style={{ background: '#0a1628', padding: '80px 0', position: 'relative', overflow: 'hidden' }}>
+      <section style={{ background: '#0a1628', padding: '50px 0', position: 'relative', overflow: 'hidden' }}>
         {/* Large VIZORA text background */}
         {/* <div style={{
           position: 'absolute',

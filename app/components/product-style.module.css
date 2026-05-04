@@ -303,12 +303,13 @@
   padding: 8px 20px;
   border-radius: 50px;
   border: 1.5px solid;
-  transition: background 0.25s ease, color 0.25s ease;
+  transition: background 0.25s ease, color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 .exploreLink:hover {
-  background: currentColor;
-  opacity: 0.9;
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 /* ─────────────────────────────────────────────

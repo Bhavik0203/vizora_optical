@@ -316,18 +316,18 @@ export default function LensesPage() {
       </section> */}
 
       {/* Fashion Video Section */}
-      <section className="fashion-video-section" style={{ background: '#0a1628', padding: '80px 0', position: 'relative', overflow: 'hidden' }}>
+      <section className="fashion-video-section" style={{ background: 'white', padding: '50px 0', position: 'relative', overflow: 'hidden' }}>
         <div className="container">
           <div className="video-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 64, alignItems: 'center' }}>
             {/* Text */}
             <div className="video-content">
               <span className="section-label">Style in Motion</span>
-              <h2 style={{ color: '#fff', marginBottom: 16 }}>See Our Lenses in Action</h2>
+              <h2 style={{ color: '#0a1628', marginBottom: 16 }}>See Our Lenses in Action</h2>
               <div style={{ width: 48, height: 2, background: 'linear-gradient(135deg, #1565c0, #0097c7)', marginBottom: 24 }} />
-              <p style={{ color: 'rgba(255,255,255,0.65)', lineHeight: 1.8, marginBottom: 16 }}>
+              <p style={{ color: '#0a1628', lineHeight: 1.8, marginBottom: 16 }}>
                 From bold cat-eye frames to sleek pilots, our progressive lenses are engineered to perform beautifully in every style - delivering clarity without compromise.
               </p>
-              <p style={{ color: 'rgba(255,255,255,0.45)', fontSize: '0.88rem', lineHeight: 1.7, marginBottom: 32 }}>
+              <p style={{ color: '#0a1628', fontSize: '0.88rem', lineHeight: 1.7, marginBottom: 32 }}>
                 Every Vizora lens is crafted to complement modern eyewear aesthetics while maintaining the highest optical standards.
               </p>
               <Link href="/contact" className="btn btn-primary" id="lenses-video-enquire">Enquire for Partnership</Link>

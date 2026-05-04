@@ -18,7 +18,7 @@ const facts = [
 
 export default function VizoraStory() {
   return (
-    <section className="section bg-white">
+    <section className="section bg-white" style={{ marginTop: '10px' }}>
       <div className="container" style={{ padding: 0 }}>
 
         {/* Top Banner */}

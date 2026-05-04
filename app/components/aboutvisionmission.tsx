@@ -299,7 +299,7 @@ export default function AboutSection() {
               }}
             >
              With a customer-first approach and a commitment to continuous improvement, Vizora Optics aims
-                to become a globally recognized trusted name in the optical industry — known for precision,
+                to become a globally recognized trusted name in the optical industry - known for precision,
                 partnership, and unwavering dedication to quality.
               </p>
           </div>

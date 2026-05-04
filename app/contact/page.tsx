@@ -7,6 +7,41 @@ import { Mail, Phone, MapPin, Send, CheckCircle } from 'lucide-react';
 const ContactPage: FC = () => {
   const [form, setForm] = useState({ name: '', company: '', email: '', phone: '', subject: '', message: '' });
   const [submitted, setSubmitted] = useState(false);
+  const [errors, setErrors] = useState({ email: '', phone: '' });
+
+  const validateEmail = (email: string) => {
+    // Must be Gmail address
+    const gmailRegex = /^[a-zA-Z0-9._%+-]+@gmail\.com$/;
+    return gmailRegex.test(email);
+  };
+
+  const validatePhone = (phone: string) => {
+    // Must be exactly 10 digits only
+    const phoneRegex = /^\d{10}$/;
+    return phoneRegex.test(phone);
+  };
+
+  const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    setForm({ ...form, email: value });
+    
+    if (value && !validateEmail(value)) {
+      setErrors({ ...errors, email: 'Please enter a valid Gmail address (example@gmail.com)' });
+    } else {
+      setErrors({ ...errors, email: '' });
+    }
+  };
+
+  const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value.replace(/\D/g, ''); // Remove non-digits
+    setForm({ ...form, phone: value });
+    
+    if (value && !validatePhone(value)) {
+      setErrors({ ...errors, phone: 'Phone number must be exactly 10 digits' });
+    } else {
+      setErrors({ ...errors, phone: '' });
+    }
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -77,6 +112,24 @@ const ContactPage: FC = () => {
         .form-input:focus, .form-select:focus, .form-textarea:focus {
           border-color: #1565c0;
           box-shadow: 0 0 0 4px rgba(21, 101, 192, 0.1);
+        }
+        
+        .form-input.error {
+          border-color: #ef4444;
+          box-shadow: 0 0 0 4px rgba(239, 68, 68, 0.1);
+        }
+        
+        .form-input.error:focus {
+          border-color: #ef4444;
+          box-shadow: 0 0 0 4px rgba(239, 68, 68, 0.1);
+        }
+        
+        .error-message {
+          color: #ef4444;
+          font-size: 0.8rem;
+          margin-top: 4px;
+          font-family: 'Inter', sans-serif;
+          font-weight: 500;
         }
         
         .form-input::placeholder, .form-textarea::placeholder {
@@ -357,13 +410,14 @@ const ContactPage: FC = () => {
                         <input 
                           id="contact-email" 
                           type="email" 
-                          className="form-input" 
+                          className={`form-input ${errors.email ? 'error' : ''}`} 
                           required 
-                          placeholder="your@email.com"
+                          placeholder="your@gmail.com"
                           value={form.email} 
-                          onChange={(e) => setForm({ ...form, email: e.target.value })} 
+                          onChange={handleEmailChange} 
                         />
                         <div className="input-border"></div>
+                        {errors.email && <div className="error-message">{errors.email}</div>}
                       </div>
                     </div>
                     <div className="form-group">
@@ -372,12 +426,14 @@ const ContactPage: FC = () => {
                         <input 
                           id="contact-phone" 
                           type="tel" 
-                          className="form-input" 
-                          placeholder="+1 (000) 000-0000"
+                          className={`form-input ${errors.phone ? 'error' : ''}`} 
+                          placeholder="1234567890"
+                          maxLength={10}
                           value={form.phone} 
-                          onChange={(e) => setForm({ ...form, phone: e.target.value })} 
+                          onChange={handlePhoneChange} 
                         />
                         <div className="input-border"></div>
+                        {errors.phone && <div className="error-message">{errors.phone}</div>}
                       </div>
                     </div>
                   </div>
@@ -460,8 +516,13 @@ const ContactPage: FC = () => {
                   <div>
                     <h4 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 700, fontSize: '1rem', marginBottom: 4 }}>Email</h4>
                     <p style={{ color: '#64748b', fontSize: '0.9rem', lineHeight: 1.6 }}>
-                      info@vizoraoptics.com<br />
-                      support@vizoraoptics.com
+                      <a href="mailto:info@vizoraoptics.com" style={{ color: 'black', textDecoration: 'none', transition: 'color 0.2s ease' }} onMouseEnter={(e) => e.currentTarget.style.color = '#0097c7'} onMouseLeave={(e) => e.currentTarget.style.color = '#1565c0'}>
+                        info@vizoraoptics.com
+                      </a>
+                      <br />
+                      <a href="mailto:support@vizoraoptics.com" style={{ color: 'black', textDecoration: 'none', transition: 'color 0.2s ease' }} onMouseEnter={(e) => e.currentTarget.style.color = '#0097c7'} onMouseLeave={(e) => e.currentTarget.style.color = '#1565c0'}>
+                        support@vizoraoptics.com
+                      </a>
                     </p>
                   </div>
                 </div>
@@ -482,7 +543,10 @@ const ContactPage: FC = () => {
                   <div>
                     <h4 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 700, fontSize: '1rem', marginBottom: 4 }}>Phone</h4>
                     <p style={{ color: '#64748b', fontSize: '0.9rem', lineHeight: 1.6 }}>
-                      +44 (0) 20 7123 4567<br />
+                      <a href="tel:+442071234567" style={{ color: 'black', textDecoration: 'none', transition: 'color 0.2s ease' }} onMouseEnter={(e) => e.currentTarget.style.color = '#0097c7'} onMouseLeave={(e) => e.currentTarget.style.color = '#1565c0'}>
+                        +44 (0) 20 7123 4567
+                      </a>
+                      <br />
                       Mon-Fri 9:00-17:30 GMT
                     </p>
                   </div>

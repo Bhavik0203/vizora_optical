@@ -100,7 +100,7 @@ export default function SpecsPage() {
 
 
         /* Interactive Tabs for Lenses */
-        .tabs-section { padding: 120px 5%; background: #ffffff; }
+        .tabs-section { padding: 50px 5%; background: #ffffff; }
         .sec-title {
           text-align: center;
           margin-bottom: 80px;
@@ -196,7 +196,7 @@ export default function SpecsPage() {
         /* Expanding Column Matrix (No Cards) */
         .coatings-matrix {
             background: #f5f5f0;
-            padding: 120px 5%;
+            padding: 50px 5%;
             color: #0a1628;
         }
         .cm-header {
@@ -369,20 +369,96 @@ export default function SpecsPage() {
             line-height: 1;
         }
 
-        /* Downloads — 2-Col Feature List */
-        .dl-sec { padding: 120px 5%; background: #ffffff; }
-        .dl-sec-top {
-          max-width: 1300px;
-          margin: 0 auto 80px auto;
-          display: flex;
-          align-items: flex-end;
-          justify-content: space-between;
-          padding-bottom: 40px;
-          border-bottom: 1px solid #e8e8e4;
-        }
-        .dl-sec-top h2 {
-          font-family: var(--font-serif, 'Playfair Display', serif);
-          font-size: clamp(2.5rem, 5vw, 4rem);
+            /* Downloads — 2-Col Feature List */
+            .dl-sec { padding: 50px 5%; background: #ffffff; }
+            .dl-sec-top {
+              max-width: 1300px;
+              margin: 0 auto 40px auto;
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+            }
+            .dl-sec-top h2 {
+              font-family: var(--font-serif, 'Playfair Display', serif);
+              font-size: clamp(2.5rem, 5vw, 4rem);
+              color: #0a1628;
+              line-height: 1;
+            }
+            .dl-sec-top span {
+              font-size: 0.78rem;
+              text-transform: uppercase;
+              letter-spacing: 0.3em;
+              color: #0097c7;
+              font-weight: 700;
+            }
+            .dl-2col {
+              max-width: 1300px;
+              margin: 0 auto;
+              display: grid;
+              grid-template-columns: 1fr 1fr;
+              gap: 0;
+            }
+            .dl-item {
+              display: flex;
+              gap: 28px;
+              padding: 48px 48px 48px 0;
+              border-bottom: 1px solid #f0f0ec;
+              text-decoration: none;
+              color: inherit;
+              position: relative;
+              transition: all 0.3s ease;
+              align-items: flex-start;
+            }
+            .dl-item:nth-child(2n) {
+              padding-left: 48px;
+              padding-right: 0;
+              border-left: 1px solid #f0f0ec;
+            }
+            .dl-item:last-child, .dl-item:nth-last-child(2) { border-bottom: none; }
+            .dl-item::after {
+              content: '';
+              position: absolute;
+              bottom: 0; left: 0;
+              height: 2px; width: 0;
+              background: linear-gradient(90deg, #1565c0, #0097c7);
+              transition: width 0.5s cubic-bezier(0.4,0,0.2,1);
+            }
+            .dl-item:hover::after { width: 100%; }
+            .dl-item:nth-child(2n)::after { left: 48px; }
+            .dl-item:hover .dl-i-num { color: #0097c7; }
+            .dl-i-num {
+              font-family: var(--font-serif, 'Playfair Display', serif);
+              font-size: 3.5rem;
+              color: #e8e8e4;
+              line-height: 1;
+              flex-shrink: 0;
+              transition: color 0.3s;
+              font-weight: 700;
+            }
+            .dl-i-body { flex: 1; }
+            .dl-i-title {
+              font-family: var(--font-serif, 'Playfair Display', serif);
+              font-size: 1.6rem;
+              color: #0a1628;
+              font-weight: 700;
+              margin-bottom: 10px;
+              display: block;
+            }
+            .dl-i-desc {
+              font-size: 0.88rem;
+              color: #4a5568;
+              line-height: 1.6;
+              display: block;
+              margin-bottom: 24px;
+            }
+            .dl-i-link {
+              font-size: 0.72rem;
+              font-weight: 700;
+              text-transform: uppercase;
+              letter-spacing: 0.15em;
+              color: #0097c7;
+              text-decoration: none;
+            }
           color: #0a1628;
           line-height: 1;
         }
@@ -463,12 +539,12 @@ export default function SpecsPage() {
         }
 
         @media (max-width: 900px) {
-          .hero-sec { min-height: 60vh; padding-top: 100px; }
+          .hero-sec { min-height: 60vh; padding-top: 50px; }
           .hero-content { flex-direction: column; text-align: center; gap: 30px; margin-top: 0; }
           .h-desc { margin: 0 auto; font-size: 1rem; }
           .h-title { font-size: 40px; margin-bottom: 20px; }
           
-          .tabs-section, .coatings-matrix, .dl-sec { padding: 60px 5%; }
+          .tabs-section, .coatings-matrix, .dl-sec { padding:20px 5%; }
           .sec-title h2 { font-size: 2rem; }
           .tc-title { font-size: 2rem; }
           .cm-header h2 { font-size: 2.2rem; }
@@ -525,7 +601,7 @@ export default function SpecsPage() {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8, ease: [0.25, 1, 0.5, 1] }}
                     >
-                        <span className="h-badge">Technical Documentation</span>
+                        {/* <span className="h-badge">Technical Documentation</span> */}
                         <h1 className="h-title">
                             <span>Specs &</span>
                             <span>Docs.</span>

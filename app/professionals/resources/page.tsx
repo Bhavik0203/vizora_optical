@@ -217,11 +217,11 @@ export default function ResourcesPage() {
       </section>
 
       {/* --- MAIN CONTENT: Card-less Editorial Layout --- */}
-      <section style={{ background: '#fcfcfc', padding: '120px 0' }}>
+      <section style={{ background: '#fcfcfc', padding: '10px 0' }}>
         <div className="container">
           
           {resources.map((category, index) => (
-            <div key={index} className={`category-wrapper ${index % 2 !== 0 ? 'reverse' : ''}`} style={{ background: category.bg === 'blue-200' ? '#dbeafe' : category.bg === 'blue-50' ? '#eff6ff' : '#fcfcfc', padding: '40px', borderRadius: '16px', marginBottom: '80px' }}>
+            <div key={index} className={`category-wrapper ${index % 2 !== 0 ? 'reverse' : ''}`} style={{ background: category.bg === 'blue-200' ? '#dbeafe' : category.bg === 'blue-50' ? '#eff6ff' : '#fcfcfc', padding: '20px', borderRadius: '16px', marginBottom: '80px' }}>
               
               {/* Sticky Left Sidebar */}
               <div className="category-sidebar">
@@ -239,7 +239,7 @@ export default function ResourcesPage() {
                       fontSize: '8rem', 
                       fontWeight: 900, 
                       lineHeight: 0.8, 
-                      marginBottom: '24px', 
+                      marginBottom: '14px', 
                       fontFamily: 'var(--font-serif)',
                       marginLeft: '-8px'
                     }}>

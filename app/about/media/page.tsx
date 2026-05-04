@@ -2,10 +2,10 @@
 import Link from 'next/link';
 
 const pressItems = [
-  { date: 'Q1 2025', category: 'Product Launch', title: 'Vizora Optics Introduces V INFINITY 4K — Setting a New Standard in Progressive Lens Design', summary: 'Vizora Optics announces the launch of its flagship ultra-premium progressive lens, the V INFINITY 4K, delivering 4K-class visual clarity with precision personalization.' },
-  { date: 'Q4 2024', category: 'Technology', title: 'VIZORA DRIVE Coating Wins Recognition for Night Vision Enhancement Technology', summary: 'Our specialized driving coating garners industry attention for its advanced glare reduction and low-light contrast enhancement capabilities.' },
-  { date: 'Q3 2024', category: 'Expansion', title: 'Vizora Optics Expands NJ Communication Hub at Wood Ridge', summary: 'Strengthening our East Coast presence, Vizora Optics formalizes its New Jersey communication office to better serve growing partner network.' },
-  { date: 'Q2 2024', category: 'Partnership', title: 'Partnership Programme Extended to Premium Optical Retailers Across PA & NJ', summary: 'Vizora Optics grows its partner network with new agreements spanning Pennsylvania and New Jersey markets.' },
+  { date: '01 2025', category: 'Product Launch', title: 'Vizora Optics Introduces V INFINITY 4K - Setting a New Standard in Progressive Lens Design', summary: 'Vizora Optics announces the launch of its flagship ultra-premium progressive lens, the V INFINITY 4K, delivering 4K-class visual clarity with precision personalization.' },
+  { date: '04 2024', category: 'Technology', title: 'VIZORA DRIVE Coating Wins Recognition for Night Vision Enhancement Technology', summary: 'Our specialized driving coating garners industry attention for its advanced glare reduction and low-light contrast enhancement capabilities.' },
+  { date: '03 2024', category: 'Expansion', title: 'Vizora Optics Expands NJ Communication Hub at Wood Ridge', summary: 'Strengthening our East Coast presence, Vizora Optics formalizes its New Jersey communication office to better serve growing partner network.' },
+  { date: '02 2024', category: 'Partnership', title: 'Partnership Programme Extended to Premium Optical Retailers Across PA & NJ', summary: 'Vizora Optics grows its partner network with new agreements spanning Pennsylvania and New Jersey markets.' },
 ];
 
 export default function MediaPage() {
@@ -27,7 +27,7 @@ export default function MediaPage() {
       {/* Press Releases */}
       <section className="section bg-white">
         <div className="container">
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: 48, flexWrap: 'wrap', gap: 20 }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: 28, flexWrap: 'wrap', gap: 20 }}>
             <div>
               <span className="section-label">Press Releases</span>
               <h2>Latest News</h2>

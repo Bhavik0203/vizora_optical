@@ -18,7 +18,7 @@ export default function ProductsPage() {
       </section>
 
       {/* Product Category Cards */}
-      <section className="section bg-white">
+      <section className="section bg-white" style={{ paddingTop: '40px', paddingBottom: '40px' }}>
         <div className="container">
           <div className="product-cards-grid">
             {[
@@ -51,7 +51,7 @@ export default function ProductsPage() {
                 data-number={`0${index + 1}`}
                 id={`products-${cat.title.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z-]/g, '')}`}
               >
-                <div className="card-icon">{cat.icon}</div>
+                {/* <div className="card-icon">{cat.icon}</div> */}
                 <h3 className="card-title">{cat.title}</h3>
                 <p className="card-description">{cat.desc}</p>
                 

@@ -1,11 +1,13 @@
 'use client'
+
+import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
-import { Key, Package, Users, Headphones, BookOpen, Eye, Stethoscope, MonitorPlay, CheckCircle } from 'lucide-react';
+import { BookOpen, Users, Award, Clock, Stethoscope, MonitorPlay, Target, Key, Package, Headphones, Eye, CheckCircle } from 'lucide-react';
 
 const modules = [
   {
     num: '01',
-    title: 'Introduction to Vizora Optics',
+    title: 'Brand & Product Overview',
     desc: 'An overview of the Vizora brand, product philosophy, and what makes our lenses different from conventional offerings.',
     topics: ['Brand values and positioning', 'Product range overview', 'V-Series lens hierarchy', 'How to position Vizora vs. competitors'],
     duration: 'Approx. 30 mins',
@@ -58,6 +60,87 @@ const modules = [
     color: '#0097c7'
   },
 ];
+
+// Counter component for animated numbers
+function AnimatedCounter({ value, duration = 2000 }: { value: string; duration?: number }) {
+  const [displayValue, setDisplayValue] = useState(0);
+  const [hasStarted, setHasStarted] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting && !hasStarted) {
+          setHasStarted(true);
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (ref.current) {
+      observer.observe(ref.current);
+    }
+
+    return () => observer.disconnect();
+  }, [hasStarted]);
+
+  useEffect(() => {
+    if (!hasStarted) return;
+
+    let targetValue = 0;
+    
+    // Parse the target value
+    if (value === '6') {
+      targetValue = 6;
+    } else if (value === '4+') {
+      targetValue = 4;
+    } else if (value === '100%') {
+      targetValue = 100;
+    } else {
+      // For non-numeric values like 'Free', just display as is
+      return;
+    }
+
+    const startTime = Date.now();
+    const endTime = startTime + duration;
+
+    const animate = () => {
+      const now = Date.now();
+      const progress = Math.min((now - startTime) / duration, 1);
+      
+      // Easing function for smooth animation
+      const easeOutQuart = 1 - Math.pow(1 - progress, 4);
+      const currentValue = Math.floor(targetValue * easeOutQuart);
+      
+      setDisplayValue(currentValue);
+
+      if (progress < 1) {
+        requestAnimationFrame(animate);
+      }
+    };
+
+    requestAnimationFrame(animate);
+  }, [hasStarted, value, duration]);
+
+  // Format the display value
+  const formatDisplayValue = () => {
+    if (value === '6') {
+      return displayValue.toString();
+    } else if (value === '4+') {
+      return displayValue === 4 ? '4+' : displayValue.toString();
+    } else if (value === '100%') {
+      return `${displayValue}%`;
+    } else {
+      return value; // For 'Free' and other non-numeric values
+    }
+  };
+
+  return (
+    <div ref={ref} style={{ fontFamily: 'Playfair Display, serif', fontSize: '2.2rem', fontWeight: 700, color: 'linear-gradient(135deg, #1565c0, #0097c7)', lineHeight: 1, marginBottom: 8 }}>
+      {formatDisplayValue()}
+    </div>
+  );
+}
 
 export default function TrainingPage() {
   return (
@@ -131,7 +214,7 @@ export default function TrainingPage() {
               { value: '100%', label: 'Product Coverage' },
             ].map((s, i) => (
               <div key={i} className="overview-stat" style={{ padding: '28px 20px', background: '#fff', border: '1px solid #e8e8e4' }}>
-                <div style={{ fontFamily: 'Playfair Display, serif', fontSize: '2.2rem', fontWeight: 700, color: 'linear-gradient(135deg, #1565c0, #0097c7)', lineHeight: 1, marginBottom: 8 }}>{s.value}</div>
+                <AnimatedCounter value={s.value} />
                 <div style={{ fontSize: '0.75rem', fontWeight: 700, color: '#9a9a96', letterSpacing: '0.1em', textTransform: 'uppercase' }}>{s.label}</div>
               </div>
             ))}
@@ -254,7 +337,7 @@ export default function TrainingPage() {
             <p style={{ maxWidth: 540, margin: '0 auto' }}>Our structured training programme takes your team from product knowledge through to confident patient consultation.</p>
           </div>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
-            {modules.map((m, i) => (
+            {modules.map((m: any, i: number) => (
               <div key={i} className="training-module" style={{
                 display: 'grid', gridTemplateColumns: '100px 1fr 140px', gap: 0,
                 border: '1px solid #e8e8e4', borderBottom: 'none', overflow: 'hidden',
@@ -301,7 +384,7 @@ export default function TrainingPage() {
                   position: 'relative',
                   borderRight: `1px solid #e8e8e4` 
                 }}>
-                  <div style={{
+                  {/* <div style={{
                     color: m.color,
                     marginBottom: '8px',
                     transition: 'transform 0.3s ease'
@@ -309,7 +392,7 @@ export default function TrainingPage() {
                   className="module-icon"
                   >
                     {m.icon}
-                  </div>
+                  </div> */}
                   <span style={{ 
                     fontFamily: 'Playfair Display, serif', 
                     fontSize: '1.3rem', 
@@ -346,7 +429,7 @@ export default function TrainingPage() {
                     {m.desc}
                   </p>
                   <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
-                    {m.topics.map((t, ti) => (
+                    {m.topics.map((t: string, ti: number) => (
                       <span key={ti} style={{ 
                         padding: '6px 12px', 
                         background: `${m.color}08`,
@@ -434,7 +517,7 @@ export default function TrainingPage() {
                 { num: '02', title: 'Receive Materials', desc: 'Get your full training pack digital modules, quick-reference cards, and consultation guides.', icon: <Package size={20} strokeWidth={1.5} /> },
                 { num: '03', title: 'Train Your Team', desc: 'Work through the training modules at your own pace, or schedule a briefing with our sales team.', icon: <Users size={20} strokeWidth={1.5} /> },
                 { num: '04', title: 'Ongoing Support', desc: 'Access continued support as you stock, recommend, and fit Vizora products.', icon: <Headphones size={20} strokeWidth={1.5} /> },
-              ].map((s, i) => (
+              ].map((s: any, i: number) => (
                 <div key={i} style={{ display: 'flex', gap: 20, padding: '18px 20px', background: '#fff', border: '1px solid #e8e8e4', transition: 'all 0.3s ease' }}>
                   <div style={{ width: 36, height: 36, background: 'linear-gradient(135deg, #1565c0, #0097c7)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, borderRadius: '8px' }}>
                     <div style={{ color: '#ffffff' }}>

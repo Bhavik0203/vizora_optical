@@ -15,7 +15,7 @@ const coatings = [
       'Enhances lens transparency for a cleaner look',
       'Provides basic scratch resistance',
       'Reduces eye strain from reflected light',
-      'Improves lens aesthetics — less glare visible to others',
+      'Improves lens aesthetics - less glare visible to others',
     ],
   },
   {
@@ -82,7 +82,7 @@ export default function TechnologyPage() {
           </nav>
           <span className="section-label">Coating Technologies</span>
           <h1 style={{ marginBottom: 16 }}>Advanced Lens Coatings</h1>
-          <p>Four specialized coating technologies engineered to address every modern visual lifestyle — from everyday clarity to premium driving performance.</p>
+          <p>Four specialized coating technologies engineered to address every modern visual lifestyle - from everyday clarity to premium driving performance.</p>
         </div>
       </section>
 
@@ -142,7 +142,7 @@ export default function TechnologyPage() {
                 <span style={{ fontSize: '1.3rem', color: 'linear-gradient(135deg, #1565c0, #0097c7)' }}>{c.icon}</span>
                 <h5 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 800, fontSize: '0.88rem', color: '#0a1628' }}>{c.name}</h5>
                 <div style={{ fontSize: '0.68rem', fontWeight: 700, color: '#9a9a96', letterSpacing: '0.1em', textTransform: 'uppercase' }}>{c.level}</div>
-                <div style={{ fontSize: '0.75rem', color: '#4a5568' }}>Best for: {c.bestFor}</div>
+                {/* <div style={{ fontSize: '0.75rem', color: '#4a5568' }}>Best for: {c.bestFor}</div> */}
               </a>
             ))}
           </div>
@@ -219,15 +219,12 @@ export default function TechnologyPage() {
                 <div style={{ flex: 1 }}>
                   <div style={{ display: 'flex', gap: 12, alignItems: 'center', flexWrap: 'wrap', marginBottom: 8 }}>
                     <h3 style={{ color: '#fff', fontFamily: 'Playfair Display, serif', fontSize: '1.5rem', lineHeight: 1.2 }}>{c.name}</h3>
-                    <span style={{ background: 'linear-gradient(135deg, #1565c0, #0097c7)', color: '#0a1628', fontSize: '0.65rem', fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', padding: '3px 10px' }}>{c.level}</span>
+                    {/* <span style={{ background: 'linear-gradient(135deg, #1565c0, #0097c7)', color: '#0a1628', fontSize: '0.65rem', fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', padding: '3px 10px' }}>{c.level}</span> */}
                   </div>
                   <p style={{ color: 'linear-gradient(135deg, #1565c0, #0097c7)', fontSize: '0.8rem', fontWeight: 600, letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: 12 }}>{c.subtitle}</p>
                   <p style={{ color: 'rgba(255,255,255,0.65)', fontSize: '0.88rem', lineHeight: 1.7, maxWidth: 680 }}>{c.desc}</p>
                 </div>
-                <div style={{ textAlign: 'right', flexShrink: 0 }}>
-                  <div style={{ fontSize: '0.65rem', fontWeight: 700, color: 'rgba(255,255,255,0.4)', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: 4 }}>Ideal For</div>
-                  <div style={{ fontSize: '0.85rem', color: 'linear-gradient(135deg, #1565c0, #0097c7)', fontWeight: 600 }}>{c.bestFor}</div>
-                </div>
+              
               </div>
               <div className="coating-details" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 0 }}>
                 <div style={{ padding: '32px 40px', borderRight: '1px solid #e8e8e4' }}>
@@ -305,7 +302,7 @@ export default function TechnologyPage() {
           }
         `}</style>
         <div className="container">
-          <div className="text-center" style={{ marginBottom: 48 }}>
+          <div className="text-center" style={{ marginBottom: 22 }}>
             <span className="section-label">Tier Positioning</span>
             <h2>Coating Comparison at a Glance</h2>
             <div className="divider divider-center" />

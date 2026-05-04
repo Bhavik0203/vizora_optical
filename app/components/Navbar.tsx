@@ -13,7 +13,6 @@ const NAV = [
       { label: 'Mission & Values', href: '/about/mission' },
       { label: 'History', href: '/about/history' },
       { label: 'Innovation & R&D', href: '/about/innovation' },
-      // { label: 'Media & Press', href: '/about/media' },
     ],
   },
   {
