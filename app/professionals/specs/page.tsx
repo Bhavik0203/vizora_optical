@@ -7,10 +7,10 @@ const specSections = [
     {
         title: 'Progressive Lens Specifications',
         items: [
-            { name: 'V SELECT HD', type: 'Standard Digital Progressive', add: '+0.75 to +3.50', material: 'Optical-grade polymer', index: '1.50 / 1.56 / 1.60 / 1.67', diameter: '70mm round', treatment: 'AR, AR PLUS, BLUE PLUS' },
-            { name: 'V FLOW HD', type: 'Advanced Digital Progressive', add: '+0.75 to +3.50', material: 'Optical-grade polymer', index: '1.50 / 1.56 / 1.60 / 1.67', diameter: '70mm round', treatment: 'AR, AR PLUS, BLUE PLUS, VIZORA DRIVE' },
-            { name: 'V ELITE HD', type: 'Premium Customized Progressive', add: '+0.75 to +3.50', material: 'Optical-grade polymer', index: '1.56 / 1.60 / 1.67 / 1.74', diameter: '70mm round', treatment: 'All coatings' },
-            { name: 'V INFINITY 4K', type: 'Ultra-Premium Digital Progressive', add: '+0.75 to +3.50', material: 'Premium optical polymer', index: '1.60 / 1.67 / 1.74', diameter: '70mm round', treatment: 'All coatings' },
+            { name: 'V SELECT HD', type: 'Standard Digital Progressive', add: '+0.75 to +3.50', index: '1.50 / 1.56 / 1.60 / 1.67 / 1.74', diameter: '70mm round', treatment: 'AR, AR PLUS, BLUE PLUS' },
+            { name: 'V FLOW HD', type: 'Advanced Digital Progressive', add: '+0.75 to +3.50', index: '1.50 / 1.56 / 1.60 / 1.67 / 1.74', diameter: '70mm round', treatment: 'AR, AR PLUS, BLUE PLUS, VIZORA DRIVE' },
+            { name: 'V ELITE HD', type: 'Premium Customized Progressive', add: '+0.75 to +3.50', index: '1.56 / 1.60 / 1.67 / 1.74', diameter: '70mm round', treatment: 'All coatings' },
+            { name: 'V INFINITY 4K', type: 'Ultra-Premium Digital Progressive', add: '+0.75 to +3.50', index: '1.60 / 1.67 / 1.74', diameter: '70mm round', treatment: 'All coatings' },
         ],
     },
 ];
@@ -651,18 +651,15 @@ export default function SpecsPage() {
                                 </div>
 
                                 <div className="tc-grid">
-                                    <div className="tc-item">
-                                        <span>Material Core</span>
-                                        <span>{activeLens.material}</span>
-                                    </div>
+
                                     <div className="tc-item">
                                         <span>Refractive Index</span>
                                         <span>{activeLens.index}</span>
                                     </div>
-                                    <div className="tc-item">
+                                    {/* <div className="tc-item">
                                         <span>Base Diameter</span>
                                         <span>{activeLens.diameter}</span>
-                                    </div>
+                                    </div> */}
                                     <div className="tc-item">
                                         <span>Compatible Coatings</span>
                                         <span className="text-gold" style={{ fontWeight: 700 }}>{activeLens.treatment}</span>

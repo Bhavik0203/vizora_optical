@@ -183,7 +183,7 @@ export default function LensesPage() {
 
      
       {/* ── Wear Your Shape ── */}
-      <section style={{ background: '#0a1628', padding: '72px 0 80px' }}>
+      {/* <section style={{ background: '#0a1628', padding: '72px 0 80px' }}>
         <style>{`
           .shape-card { display: flex; flex-direction: column; align-items: center; gap: 0px; cursor: default; }
           .shape-icon-wrap {
@@ -198,7 +198,7 @@ export default function LensesPage() {
           .shape-card:hover .shape-icon-wrap img { transform: scale(1.1); }
         `}</style>
         <div className="container">
-          {/* Heading */}
+        
           <div style={{ textAlign: 'center', marginBottom: 10 }}>
             <h2 style={{
               color: '#fff',
@@ -262,7 +262,7 @@ export default function LensesPage() {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
             <ProductStyle/>
 
       {/* Individual lens cards */}
